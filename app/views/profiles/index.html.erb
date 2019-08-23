@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="demo">
+    <header class="demo__header"></header>
+    <div class="demo__content">
+      <div class="demo__card-cont">
+        <% @users.each do |user| %>
+          <div class="demo__card" data-id="<%= user.id %>">
+            <div class="demo__card__top brown">
+              <div class="demo__card__img">
+                <%= cl_image_tag user.photos.first.photo, height: 300, width: 400, crop: :fill %>
+              </div>
+              <p class="demo__card__name"><%= user.user_name %></p>
+            </div>
+            <div class="demo__card__choice m--reject"></div>
+            <div class="demo__card__choice m--like"></div>
+            <div class="demo__card__drag"></div>
+          </div>
+        <% end %>
+      </div>
+      <p class="demo__tip">Swipe left or right</p>
+    </div>
+  </div>
+
+
+  <% if @users.any? %>
+  <div class="media-cont">
+    <div class="user-media">
+      <div class="user-vid">
+        <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/<%= @users.last.youtube_vid_id %>">
+        </iframe>
+      </div>
+      <div class="user-sc">
+        <iframe width="720" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/lucia-goti/tracks"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+</div>
+
+<div class="overlay"></div>
+<div class="match-modal">it's a match</div>

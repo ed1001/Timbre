@@ -1,0 +1,9 @@
+<%= simple_form_for photo, remote: true, url: create_photo_path do |f| %>
+  <div class="form-inputs">
+    <%= f.input :photo, label: false %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "crop and add" %>
+    <div class="photo-cancel">cancel</div>
+  </div>
+<% end %>

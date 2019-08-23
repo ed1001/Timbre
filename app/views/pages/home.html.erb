@@ -1,0 +1,33 @@
+<div class="banner-container">
+  <div class="banner-text">
+    <h1>Come find your perfect musical match...</h1>
+  <%= link_to show_form_path(option: "login"), remote: true, class: 'login-btn' do %>
+    <div>log in/sign up</div>
+  <% end %>
+  </div>
+  <div id="banner-carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= cl_image_tag("q2r4ei1eviugbxfmmwwd",
+        width: 1650, height: 900, crop: :fill, class: "d-block w-100") %>
+      </div>
+      <div class="carousel-item">
+        <%= cl_image_tag("yowlsqfsdn5rcxhbvmhs",
+        width: 1650, height: 900, crop: :fill, class: "d-block w-100") %>
+      </div>
+      <div class="carousel-item">
+        <%= cl_image_tag("fwfpvhtejlpzaueemu5i",
+        width: 1650, height: 900, crop: :fill, class: "d-block w-100") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-cnt col-sm-6 offset-sm-3">
+  <div class="my-btn-grp">
+    <div class="my-btn my-btn-left" data-option="login">Log in</div>
+    <div class="my-btn my-btn-right" data-option="signup">Sign up</div>
+  </div>
+  <div class="login-form"></div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="navbar-timbre">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fas fa-drum"></i>
+    <span id="logo-name">Timbre</span>
+  <% end %>
+
+  <div class="d-flex">
+      <div class="reveal-container">
+        <div class="reveal-options">
+          <% if user_signed_in? %>
+            <%= link_to 'log out', destroy_user_session_path, method: :delete %>
+            <%= link_to 'settings', settings_path %>
+          <% else %>
+            <%= link_to 'login', show_form_path(option: "login"), remote: true %>
+            <%= link_to 'sign up', show_form_path, remote: true %>
+          <% end %>
+          <a href="/">about us</a>
+          <a href="/">FAQS</a>
+        </div>
+      </div>
+      <div id="nav-burger">
+        <span></span>
+        <span></span>
+      </div>
+  </div>
+</div>

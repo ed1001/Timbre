@@ -1,0 +1,31 @@
+var loginForm = document.querySelector('.login-form');
+var loginCnt = document.querySelector('.form-cnt');
+var myBtnLeft = document.querySelector('.my-btn-left');
+var myBtnRight = document.querySelector('.my-btn-right');
+
+var scrollToForm = () => {
+  loginForm.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+}
+
+<% if @option == 'login' %>
+  if (!myBtnLeft.classList.contains('my-btn-active')) {
+    myBtnRight.classList.remove('my-btn-active')
+    myBtnLeft.classList.add('my-btn-active')
+    loginCnt.classList.add('show-form');
+    loginForm.innerHTML = '<%= j render "devise/sessions/new", resource: @resource %>'
+  }
+<% else %>
+  if (!myBtnRight.classList.contains('my-btn-active')) {
+    myBtnLeft.classList.remove('my-btn-active')
+    myBtnRight.classList.add('my-btn-active')
+    loginCnt.classList.add('show-form');
+    loginForm.innerHTML = '<%= j render "devise/registrations/new", resource: @resource %>'
+  }
+<% end %>
+
+// if (loginForm.innerHTML === "" ) {
+//   loginCnt.classList.add('show-form');
+//   loginForm.insertAdjacentHTML('afterbegin', '<%= j render "devise/sessions/new", resource: @resource %>');
+// }
+
+setTimeout(scrollToForm, 50);

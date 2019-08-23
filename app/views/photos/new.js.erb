@@ -1,0 +1,5 @@
+var photoModal = document.querySelector('.photo-modal');
+
+photoModal.innerHTML = '<%= j render "photo_form", photo: @photo %>'
+photoModal.classList.add('is-visible');
+

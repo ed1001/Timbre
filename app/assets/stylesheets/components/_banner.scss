@@ -1,0 +1,172 @@
+.banner-container {
+  display: flex;
+  margin-top: 50px;
+  align-content: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.banner-text {
+  margin: auto 0 auto auto;
+  width: 600px;
+  min-width: 180px;
+  margin-right: 16px;
+  opacity: 0;
+  animation: fade-in-up ease 1.4s forwards;
+  animation-delay: 0.35s;
+  h1 {
+    font-weight: 200;
+    font-size: 95px;
+  }
+}
+
+#banner-carousel {
+  width: 1650px;
+  height: 900px;
+  min-width: 600px;
+  margin-left: auto;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fade-in-up ease 1.4s forwards;
+  img {
+    height: 900px;
+  }
+}
+
+.login-btn {
+  display: flex;
+  padding: 5px 0px;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 21px;
+  margin-top: 140px;
+  font-size: 20px;
+  font-weight: 200;
+  opacity: 0;
+  transition: background-color 0.3s, color 0.3s;
+  animation: fade-in 1.2s forwards;
+  animation-delay: 1s;
+  visibility: hidden;
+  text-decoration: none;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.form-inputs {
+  animation: fade-in ease 2.4s forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes grow-left {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 2300px) {
+  .banner-text {
+    width: 450px;
+    h1 {
+      font-size: 75px;
+    }
+  }
+  #banner-carousel {
+    width: 1302px;
+    height: 710px;
+    img {
+      height: 710px;
+    }
+  }
+  .login-btn {
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 1830px) {
+  .banner-text {
+    width: 375px;
+    h1 {
+      font-size: 60px;
+    }
+  }
+  #banner-carousel {
+    width: 1000px;
+    height: 545px;
+    img {
+      height: 545px;
+    }
+  }
+  .login-btn {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .banner-text {
+    width: 275px;
+    h1 {
+      font-size: 45px;
+    }
+  }
+  #banner-carousel {
+    width: 800px;
+    height: 436px;
+    img {
+      height: 436px;
+    }
+  }
+  .login-btn {
+    font-size: 12.5px;
+    margin-top: 55px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .banner-text {
+    width: 180px;
+    h1 {
+      font-size: 30px;
+    }
+  }
+  #banner-carousel {
+    width: 600px;
+    height: 327px;
+    img {
+      height: 327px;
+    }
+  }
+  .login-btn {
+    font-size: 10px;
+    margin-top: 40px;
+  }
+}

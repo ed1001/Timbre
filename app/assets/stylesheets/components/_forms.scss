@@ -1,0 +1,244 @@
+.form-cnt {
+  background-color: white;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  padding: 0;
+  border-radius: 3px;
+  font-size: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: height 10s, ease-in-out;
+  user-select: none;
+}
+
+.my-btn-grp {
+  display: flex;
+  height: 40px;
+  border-radius: 3px 3px 0 0;
+}
+
+.my-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  text-align: center;
+  background-color: rgb(233, 233, 233);
+  color: rgba(0, 0, 0, 0.6);
+  user-select: none;
+  &:hover{
+    color: black;
+    cursor: pointer;
+  }
+}
+
+.my-btn-left {
+  border-radius: 3px 0 0 0;
+}
+
+.my-btn-right {
+  border-radius: 0 3px 0 0;
+}
+
+.my-btn-active {
+  background-color: white;
+  color: black;
+  &:hover {
+    cursor: default;
+  }
+}
+
+.login-form {
+  padding: 32px;
+  a {
+    color: gray;
+    text-decoration: none;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.show-form {
+  visibility: visible;
+  opacity: 1;
+  animation: fade-in-up ease 1s forwards;
+}
+
+.form-btn {
+  width: 100%;
+  display: flex;
+  padding: 5px 0px;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 21px;
+  font-weight: 200;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.form-control {
+  background-color: white;
+  height: 45px;
+  &:focus {
+    background-color: rgb(233, 233, 233);
+    box-shadow: 0 0 0 0;
+    border: 1px solid #ced4da;
+  }
+}
+
+.form-inputs {
+  animation: fade-in ease .7s forwards;
+}
+
+.form-actions {
+  animation: fade-in ease .7s forwards;
+}
+
+.form-other {
+  animation: fade-in ease .7s forwards;
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-right: 16px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 40px;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 40px;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform .4s, background-color .4s;
+    border-radius: 50%;
+  }
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+@media (max-width: 2300px) {
+  .form-cnt {
+    font-size: 18px;
+  }
+  .form-control {
+    height: 40px;
+  }
+  .my-btn-grp {
+    height: 40px;
+  }
+}
+
+@media (max-width: 1830px) {
+  .form-cnt {
+    font-size: 16px;
+  }
+  .form-control {
+    height: 37px;
+  }
+  .my-btn-grp {
+    height: 37px;
+  }
+  .switch {
+    width: 60px;
+    height: 32px;
+  }
+  .slider {
+  border-radius: 32px;
+    &:before {
+      height: 26px;
+      width: 26px;
+      left: 3px;
+      bottom: 3px;
+    }
+  }
+  input:checked + .slider:before {
+    transform: translateX(28px);
+  }
+}
+
+@media (max-width: 1420px) {
+  .form-cnt {
+    font-size: 14px;
+  }
+  .form-btn {
+    font-size: 12.5px;
+  }
+  .form-control {
+    height: 28px;
+  }
+  .my-btn-grp {
+    height: 28px;
+  }
+  .switch {
+    width: 48px;
+    height: 24px;
+  }
+  .slider {
+  border-radius: 24px;
+    &:before {
+      height: 20px;
+      width: 20px;
+      left: 1.8px;
+      bottom: 1.8px;
+    }
+  }
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .form-cnt {
+    font-size: 12px;
+  }
+  .form-btn {
+    font-size: 10px;
+  }
+  .form-control {
+    height: 24px;
+  }
+  .my-btn-grp {
+    height: 24px;
+  }
+}

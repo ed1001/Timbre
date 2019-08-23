@@ -1,0 +1,20 @@
+var mediaCont = document.querySelector('.media-cont');
+mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
+
+<% if @match %>
+  console.log('match');
+  document.querySelector('.main').classList.add('blur');
+  document.querySelector('.overlay').classList.add('is-visible');
+  document.querySelector('.match-modal').classList.add('is-visible');
+  document.querySelector('.match-modal').classList.remove('move-down');
+  document.querySelector('.match-modal').classList.add('move-up');
+
+  document.querySelector('.overlay').addEventListener('click', () => {
+    console.log('hsfdshsdfsdfh');
+    document.querySelector('.main').classList.remove('blur');
+    document.querySelector('.match-modal').classList.remove('is-visible');
+    document.querySelector('.match-modal').classList.add('move-down');
+    document.querySelector('.match-modal').classList.remove('move-up');
+    document.querySelector('.overlay').classList.remove('is-visible');
+  });
+<% end %>

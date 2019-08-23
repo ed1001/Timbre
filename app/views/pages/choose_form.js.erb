@@ -1,0 +1,7 @@
+var formCnt = document.querySelector('.login-form')
+
+<% if @option == 'login' %>
+  formCnt.innerHTML = '<%= j render "devise/sessions/new", resource: @resource %>'
+<% else %>
+  formCnt.innerHTML = '<%= j render "devise/registrations/new", resource: @resource %>'
+<% end %>
