@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :avoids, dependent: :destroy
+  has_many :matches, dependent: :destroy
 
   validates :user_name, presence: true
   validates :email, presence: true

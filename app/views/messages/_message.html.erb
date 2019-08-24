@@ -1,0 +1,7 @@
+<% if user == message.user %>
+  <div class="comment bubble-right">
+<% else %>
+  <div class="comment bubble-left">
+<% end %>
+    <p><%= message.body %></p>
+  </div>

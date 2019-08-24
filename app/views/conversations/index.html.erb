@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="container-conversation">
+    <% if @conversations.length > 0 %>
+      <div class="conversation-bar">
+        <% @conversations.each do |conversation| %>
+          <%= link_to conversation_path(conversation), remote: true do %>
+            <% rMessages = conversation.messages.where(user_id: conversation.opposed_user(current_user).id) %>
+            <% cClasses = "conversation-box" %>
+            <% if rMessages.count > 0 %>
+              <% if rMessages.last.read == false %>
+                <% cClasses = "conversation-box conversation-box-new" %>
+              <% end %>
+            <% end %>
+            <div class="<%= cClasses %>">
+              <%= cl_image_tag conversation.opposed_user(current_user).photos.first, height: 40, width: 40, crop: :fill, class: "avatar" %>
+              <div class="conv-box">
+                <div class="conv-box-top">
+                  <p class="conv-user-name">
+                    <%=  conversation.opposed_user(current_user).user_name %>
+                  </p>
+                  <p class="conv-time">
+                    <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %>
+                  </p>
+                </div>
+                <p class="conv-preview <%=" conv-preview-#{conversation.id}"%>">
+                  <% if conversation.messages.last.body.length < 25 %>
+                    <%= conversation.messages.last.body %>
+                  <% else %>
+                    <%= conversation.messages.last.body[0..25] %>...
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="conv-display-container">
+        <div class="conversation-display">
+          <h1>Your career. <br>Your skills. <br>Your move...</h1>
+        </div>
+      </div>
+      <% else %>
+      <div class="conversation-bar"></div>
+        <div class="conversation-display">
+          <h1>No conversations here yet...</h1>
+        </div>
+      <% end %>
+  </div>
+</div>

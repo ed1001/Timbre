@@ -1,6 +1,6 @@
 var mediaCont = document.querySelector('.media-cont');
 mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
-
+console.log('whatever');
 <% if @match %>
   console.log('match');
   document.querySelector('.main').classList.add('blur');
@@ -10,7 +10,6 @@ mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
   document.querySelector('.match-modal').classList.add('move-up');
 
   document.querySelector('.overlay').addEventListener('click', () => {
-    console.log('hsfdshsdfsdfh');
     document.querySelector('.main').classList.remove('blur');
     document.querySelector('.match-modal').classList.remove('is-visible');
     document.querySelector('.match-modal').classList.add('move-down');

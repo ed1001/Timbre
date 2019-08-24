@@ -13,6 +13,9 @@
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <%= yield %>
+    <% if current_user %>
+      <p hidden id="conv-user-id" data-user-id="<%= current_user.id %>"></p>
+    <% end %>
     </div>
       <%= render 'shared/footer' %>
       <%= javascript_include_tag 'application' %>

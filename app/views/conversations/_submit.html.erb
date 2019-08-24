@@ -1,0 +1,12 @@
+<div class="new-message-container">
+  <form class="new_message">
+    <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
+    <input name="user_id" type="hidden" value="<%= current_user.id %>">
+    <div class="message-text-btn">
+      <textarea name="body" class="autoExpand typing-area"></textarea>
+      <button type="submit" class="fabutton" rows='3' data-min-rows='3' placeholder='type a message...'>
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+</div>

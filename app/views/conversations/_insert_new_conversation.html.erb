@@ -1,0 +1,18 @@
+<%= link_to conversation_path(conversation), remote: true do %>
+  <div class="conversation-box">
+      <%= cl_image_tag conversation.opposed_user(current_user).photo, height: 70, width: 70, crop: :fill, class: "avatar" %>
+    <div class="conv-box">
+      <div class="conv-box-top">
+        <p class="conv-user-name"><%=  conversation.opposed_user(current_user).first_name %> <%= conversation.opposed_user(current_user).last_name %></p>
+        <p class="conv-time"> <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %></p>
+      </div>
+      <p class="conv-preview <%="conv-preview-#{conversation.id}"%>">
+        <% if conversation.messages.last.body.length < 25 %>
+          <%= conversation.messages.last.body %>
+        <% else %>
+          <%= conversation.messages.last.body[0..25] %>...
+        <% end %>
+        </p>
+    </div>
+  </div>
+<% end %>
