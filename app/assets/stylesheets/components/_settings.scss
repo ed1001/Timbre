@@ -10,6 +10,16 @@
   display: flex;
 }
 
+.left-settings {
+  width: 40%;
+  margin: 32px;
+}
+
+.right-settings {
+  width: 40%;
+  margin: 32px;
+}
+
 .slider-cnt {
     display: flex;
     flex-direction: column;
@@ -30,7 +40,6 @@
   }
 }
 .range-slider {
-
 
 }
 .rs-range {

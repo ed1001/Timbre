@@ -7,7 +7,11 @@
           <div class="demo__card" data-id="<%= user.id %>">
             <div class="demo__card__top brown">
               <div class="demo__card__img">
-                <%= cl_image_tag user.photos.first.photo, height: 300, width: 400, crop: :fill %>
+                <% if user.photos.present? %>
+                  <%= cl_image_tag user.photos.first.photo, height: 300, width: 400, crop: :fill %>
+                <% else %>
+                  <%= cl_image_tag("zhmfp4jug22adwgcblsr", height: 300, width: 400, crop: :fill) %>
+                <% end %>
               </div>
               <p class="demo__card__name"><%= user.user_name %></p>
             </div>
@@ -40,4 +44,7 @@
 </div>
 
 <div class="overlay"></div>
-<div class="match-modal">it's a match</div>
+<div class="match-modal"></div>
+
+
+

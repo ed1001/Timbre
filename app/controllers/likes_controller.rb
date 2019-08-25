@@ -12,6 +12,7 @@ class LikesController < ApplicationController
       if find_like
         # find_like.liked returns bool, assign to @match
         @match = find_like.liked
+        @opposed_user = User.find(params[:id])
         current_user.matches.build(opposed_user_id: params[:id]).save!
       else
         # has not come across you yet, add this user to your likes array

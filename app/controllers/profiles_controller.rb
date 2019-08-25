@@ -1,10 +1,7 @@
 class ProfilesController < ApplicationController
   def index
-    @avoids = []
-    current_user.avoids.each do |avoid|
-      @avoids << avoid.opposed_user_id
-    end
-    @users = User.all_except(current_user, @avoids)
+    @avoids = current_user.avoids
+    @users = User.all_except(current_user, @avoids, current_user.latitude, current_user.longitude, current_user.range)
   end
 
   def settings
