@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     root :to => 'profiles#index'
 end
 
-  resources :profiles, only: [:show]
+  # resources :profiles, only: [:show]
+
 
   get '/discover', to: 'profiles#index', as: :discover
   get '/settings', to: 'profiles#settings', as: :settings
@@ -17,6 +18,9 @@ end
   post '/profiles/locate', to: 'profiles#locate'
   post '/profiles/range', to: 'profiles#range'
   get '/pages/chooseform', to: 'pages#choose_form'
+  get '/profiles/editbio', to: 'profiles#edit_bio', as: :edit_bio
+  get '/profiles/savebio', to: 'profiles#save_bio', as: :save_bio
+  patch '/profiles/updateyoutube', to: 'profiles#update_youtube', as: :update_youtube
 
   post 'message/update', to: 'messages#update_message'
 

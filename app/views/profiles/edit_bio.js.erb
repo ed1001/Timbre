@@ -1,0 +1,19 @@
+var bioCont = document.querySelector('.bio-cont');
+var saveBio = document.querySelector('.save-bio');
+
+bioCont.innerHTML = '<%= j render "bio_text", user: current_user %>'
+
+var bioText = document.querySelector('.bio-text');
+
+bioText.focus();
+
+saveBio.style.display = "inline";
+saveBio.addEventListener('click', () => {
+  var mydata = `text=${bioText.value}`
+  Rails.ajax({
+    url: "/profiles/savebio",
+    type: "GET",
+    data: mydata
+  });
+  saveBio.style.display = "none";
+});

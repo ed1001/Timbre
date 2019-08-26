@@ -4,9 +4,8 @@ class LikesController < ApplicationController
     @next = params[:next]
     # add to avoid list
     current_user.avoids.build(opposed_user_id: params[:id]).save!
-    @liked = params[:liked] == 'true'
 
-    if @liked
+    if params[:liked] == 'true'
       # you liked them, check if opposed user has come across you
       find_like = User.find(params[:id]).likes.find { |like| like.opposed_user_id == current_user.id }
       if find_like

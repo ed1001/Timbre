@@ -12,9 +12,10 @@ class User < ApplicationRecord
   validates :user_name, presence: true
   validates :email, presence: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 18 }
-  # validates :sc_url, presence: true, format: { with: /\Ahttps:\/\/soundcloud.com\/[^\/]+\/(sets\/)?[^\/]+\z/i, message: "Incorrect format for Soundcloud track or playlist"}
+  validates :sc_url, presence: true, format: { with: /\Ahttps:\/\/soundcloud.com\/[^\/]+\/(sets\/)?[^\/]+\z/i, message: "Incorrect format for Soundcloud track or playlist"}
 
   reverse_geocoded_by :latitude, :longitude
 
-  scope :all_except, ->(user, avoids, lat, long, range) { where.not(id: user).where.not(id: avoids).near([lat, long], range, units: :km) }
+  # scope :all_except, ->(user, avoids, lat, long, range) { where.not(id: user).where.not(id: avoids).near([lat, long], range, units: :km) }
+  scope :all_except, ->(user, avoids) { where.not(id: user).where.not(id: avoids) }
 end

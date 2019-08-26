@@ -1,5 +1,7 @@
 <!-- main container -->
 <div class="settings-cnt">
+
+  <!-- left side -->
   <div class="left-settings">
 
     <!-- photo collection -->
@@ -20,7 +22,50 @@
       </div>
     </div>
   </div>
-  <div class="right-settings"></div>
+
+  <!-- right side -->
+  <div class="right-settings">
+    <!-- user bio -->
+    <div class="bio-cont">
+      <%= current_user.bio %>
+    </div>
+    <%= link_to edit_bio_path, remote: true do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+    <i class="far fa-save save-bio"></i>
+
+    <!-- user media -->
+    <div class="youtube-cont">
+      <p>YouTube</p>
+
+      <%= form_with(url: "/profiles/updateyoutube", method: "patch") do %>
+        <%= label_tag(:youtube_id, "Enter YouTube ID:") %>
+        <%= text_field_tag(:youtube_id) %>
+        <%= submit_tag("Save") %>
+      <% end %>
+
+      <div class="user-vid">
+        <iframe class="vid-frame" width="420" height="315"
+        src="https://www.youtube.com/embed/<%= current_user.youtube_vid_id %>">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="soundcloud-cont">
+      <p>YouTube</p>
+
+      <%= form_with(url: "/profiles/updatesoundcloud", method: "patch") do %>
+        <%= label_tag(:soundcloud_url, "Enter soundcloud URL:") %>
+        <%= text_field_tag(:soundcloud_url) %>
+        <%= submit_tag("Save") %>
+      <% end %>
+
+      <div class="user-sc">
+        <iframe width="720" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=<%= current_user.sc_url %>"></iframe>
+      </div>
+    </div>
+
+  </div>
   <div class="sidebar"></div>
 </div>
 
