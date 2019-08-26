@@ -21,6 +21,7 @@ end
   get '/profiles/editbio', to: 'profiles#edit_bio', as: :edit_bio
   get '/profiles/savebio', to: 'profiles#save_bio', as: :save_bio
   patch '/profiles/updateyoutube', to: 'profiles#update_youtube', as: :update_youtube
+  patch '/profiles/updatesoundcloud', to: 'profiles#update_soundcloud', as: :update_soundcloud
 
   post 'message/update', to: 'messages#update_message'
 

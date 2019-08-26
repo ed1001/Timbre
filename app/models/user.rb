@@ -16,6 +16,5 @@ class User < ApplicationRecord
 
   reverse_geocoded_by :latitude, :longitude
 
-  # scope :all_except, ->(user, avoids, lat, long, range) { where.not(id: user).where.not(id: avoids).near([lat, long], range, units: :km) }
-  scope :all_except, ->(user, avoids) { where.not(id: user).where.not(id: avoids) }
+  scope :all_except, ->(user, avoids, lat, long, range) { where.not(id: user).where.not(id: avoids).near([lat, long], range, units: :km) }
 end
