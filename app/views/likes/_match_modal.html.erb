@@ -1,0 +1,11 @@
+<div class="modal-content<%= user.id %> modal-content">
+  <p><em><%= "Send #{user.user_name} a message..." %></em></p>
+  <%= simple_form_for :conversation, url: conversations_path(user_id: user.id), remote: true, method: :post, html: { class: "new_message"} do |form| %>
+    <%= form.input :content, label: false, input_html: { id: "message-field" } %>
+    <% form.hidden_field :user_id, value: user %>
+    <div class="d-flex">
+      <%= form.button :submit, value: 'send', class: "modal-submit" %>
+    <% end %>
+    <div class="modal-cancel">keep swiping</div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 puts 'cleaning DB...'
 
+Message.delete_all
+Conversation.delete_all
 User.destroy_all
 Photo.destroy_all
 
@@ -15,7 +17,8 @@ user_hash = [
     password: 'password',
     password_confirmation: 'password',
     youtube_vid_id: 'zqNTltOGh5c',
-    sc_url: 'https://soundcloud.com/lovelovesyousoo/sets/jazzhip7c'
+    sc_url: 'https://soundcloud.com/lovelovesyousoo/sets/jazzhip7c',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus labore dolores illo voluptatem modi soluta incidunt ea laborum provident ab earum ducimus itaque vero non, nam quidem deleniti? Accusantium ea quibusdam laboriosam, vitae quam odio praesentium autem quisquam mollitia, tempore eos laborum repellendus laudantium ad corrupti adipisci cupiditate. Facere soluta harum reiciendis aliquam, obcaecati dicta magni delectus repellat. Nemo magnam reiciendis ab esse, quis animi impedit itaque repellat vel tempora eius magni perspiciatis ut commodi. Repellendus, laudantium facere necessitatibus, fugit ducimus alias eligendi tempora, nulla sed iure aliquid. Voluptas asperiores aliquam quaerat dicta neque doloremque, aut. Neque eius a voluptatibus?'
   },
   {
     email: '2@1.com',
@@ -26,7 +29,8 @@ user_hash = [
     password: 'password',
     password_confirmation: 'password',
     youtube_vid_id: 'KNIZofPB8ZM',
-    sc_url: 'https://soundcloud.com/lucia-goti/tracks'
+    sc_url: 'https://soundcloud.com/lucia-goti/tracks',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus labore dolores illo voluptatem modi soluta incidunt ea laborum provident ab earum ducimus itaque vero non, nam quidem deleniti? Accusantium ea quibusdam laboriosam, vitae quam odio praesentium autem quisquam mollitia, tempore eos laborum repellendus laudantium ad corrupti adipisci cupiditate. Facere soluta harum reiciendis aliquam, obcaecati dicta magni delectus repellat. Nemo magnam reiciendis ab esse, quis animi impedit itaque repellat vel tempora eius magni perspiciatis ut commodi. Repellendus, laudantium facere necessitatibus, fugit ducimus alias eligendi tempora, nulla sed iure aliquid. Voluptas asperiores aliquam quaerat dicta neque doloremque, aut. Neque eius a voluptatibus?'
   },
   {
     email: '3@1.com',
@@ -37,7 +41,8 @@ user_hash = [
     password: 'password',
     password_confirmation: 'password',
     youtube_vid_id: 'iaFK6AHhU8s',
-    sc_url: 'https://soundcloud.com/randy-gerard-c-r/sets/study-electronic-chill'
+    sc_url: 'https://soundcloud.com/randy-gerard-c-r/sets/study-electronic-chill',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus labore dolores illo voluptatem modi soluta incidunt ea laborum provident ab earum ducimus itaque vero non, nam quidem deleniti? Accusantium ea quibusdam laboriosam, vitae quam odio praesentium autem quisquam mollitia, tempore eos laborum repellendus laudantium ad corrupti adipisci cupiditate. Facere soluta harum reiciendis aliquam, obcaecati dicta magni delectus repellat. Nemo magnam reiciendis ab esse, quis animi impedit itaque repellat vel tempora eius magni perspiciatis ut commodi. Repellendus, laudantium facere necessitatibus, fugit ducimus alias eligendi tempora, nulla sed iure aliquid. Voluptas asperiores aliquam quaerat dicta neque doloremque, aut. Neque eius a voluptatibus?'
   },
   {
     email: '4@1.com',

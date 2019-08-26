@@ -1,0 +1,20 @@
+<div class="conversation-topper">
+  <div class="d-flex">
+    <%= cl_image_tag conversation.opposed_user(current_user).photos.first, height: 70, width: 70, crop: :fill, class: "avatar" %>
+    <div><%= conversation.opposed_user(current_user).user_name %></div>
+  </div>
+  <i class="fas fa-bars convo-top-info dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messageDropdown">
+  <%= link_to "View profile", profile_path(conversation.opposed_user(current_user)), class: "dropdown-item" %>
+</div>
+</div>
+
+<% @messages.each do |message| %>
+  <% if current_user == message.user %>
+    <div class="comment bubble-right" data-message-id="<%= message.id %>">
+  <% else %>
+    <div class="comment bubble-left" data-message-id="<%= message.id %>">
+  <% end %>
+    <p><%= message.body %></p>
+  </div>
+<% end %>

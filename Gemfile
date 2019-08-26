@@ -6,6 +6,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
 gem 'mini_magick'
+gem "nokogiri", ">= 1.10.4"
 
 gem 'bootsnap', require: false
 gem 'devise'

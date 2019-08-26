@@ -1,20 +1,35 @@
 var mediaCont = document.querySelector('.media-cont');
+var modalCont = document.querySelector('.match-modal');
+
 mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
 
-<% if @match %>
-  console.log('match');
+var showModal = () => {
   document.querySelector('.main').classList.add('blur');
   document.querySelector('.overlay').classList.add('is-visible');
-  document.querySelector('.match-modal').classList.add('is-visible');
-  document.querySelector('.match-modal').classList.remove('move-down');
-  document.querySelector('.match-modal').classList.add('move-up');
+  modalCont.classList.add('is-visible');
+  modalCont.classList.remove('move-down');
+  modalCont.classList.add('move-up');
+}
 
-  document.querySelector('.overlay').addEventListener('click', () => {
-    console.log('hsfdshsdfsdfh');
+var hideModal = () => {
     document.querySelector('.main').classList.remove('blur');
-    document.querySelector('.match-modal').classList.remove('is-visible');
-    document.querySelector('.match-modal').classList.add('move-down');
-    document.querySelector('.match-modal').classList.remove('move-up');
+    modalCont.classList.remove('is-visible');
+    modalCont.classList.add('move-down');
+    modalCont.classList.remove('move-up');
     document.querySelector('.overlay').classList.remove('is-visible');
-  });
+}
+
+<% if @match %>
+
+  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @opposed_user %>'
+
+  showModal();
+
+  var messageField = document.getElementById('message-field');
+  messageField.value = ""
+  messageField.focus();
+
+  document.querySelector('.modal-cancel').addEventListener('click', hideModal);
+  document.querySelector('.modal-submit').addEventListener('click', hideModal);
 <% end %>
+

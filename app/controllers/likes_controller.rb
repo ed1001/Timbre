@@ -1,39 +1,30 @@
 class LikesController < ApplicationController
   def update
-    # get next details to render next user
+    # get details to render next user
     @next = params[:next]
     # add to avoid list
     current_user.avoids.build(opposed_user_id: params[:id]).save!
-    @match = false
     @liked = params[:liked] == 'true'
 
     if @liked
+      # you liked them, check if opposed user has come across you
       find_like = User.find(params[:id]).likes.find { |like| like.opposed_user_id == current_user.id }
       if find_like
-        if find_like.liked
-          # liked you too
-          @match = true
-          respond_to do |format|
-            format.js
-          end
-        else
-          # did not like you back
-          respond_to do |format|
-            format.js
-          end
-        end
+        # find_like.liked returns bool, assign to @match
+        @match = find_like.liked
+        @opposed_user = User.find(params[:id])
+        current_user.matches.build(opposed_user_id: params[:id]).save!
       else
         # has not come across you yet, add this user to your likes array
         current_user.likes.build(opposed_user_id: params[:id], liked: true).save!
-        respond_to do |format|
-          format.js
-        end
       end
     else
+      # you didn't like them, add to likes array, liked: false
       current_user.likes.build(opposed_user_id: params[:id], liked: false).save!
-      respond_to do |format|
-        format.js
-      end
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 end
