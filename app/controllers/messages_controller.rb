@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  skip_after_action :verify_authorized
   skip_before_action :verify_authenticity_token, only: [:update_message]
 
   def create
