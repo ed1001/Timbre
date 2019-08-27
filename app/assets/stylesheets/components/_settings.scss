@@ -4,18 +4,24 @@
 }
 
 .left-settings {
-  width: 40%;
+  width: 30%;
   margin: 32px;
 }
 
-.right-settings {
-  width: 40%;
+.mid-settings {
+  width: 30%;
+  margin: 32px;
+}
+
+.mid-settings {
+  width: 30%;
   margin: 32px;
 }
 
 .photos {
   height: 40rem;
   background: white;
+  min-width: 35rem;
 }
 
 .col-4 {
@@ -25,21 +31,30 @@
 .photo-cell {
   height: 12em;
   width: 10em;
-  border: 3px dotted black;
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  i {
-    font-size: 28px;
-    opacity: 0.6;
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
+  &.empty {
+    border: 1.5px dotted black;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    i {
+      font-size: 28px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+        &:hover {
+          opacity: 1;
+          cursor: pointer;
+        }
     }
   }
 }
+
 
 .slider-cnt {
     display: flex;

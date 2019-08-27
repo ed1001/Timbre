@@ -14,9 +14,7 @@ class ConversationsController < ApplicationController
     message.conversation = @conversation
     message.user = current_user
     message.save!
-    # MessageBroadcastJob.new.perform(message)
     respond_to do |format|
-      format.html { redirect_to profile_path(params[:user_id]) }
       format.js
     end
   end

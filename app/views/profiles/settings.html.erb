@@ -6,41 +6,39 @@
 
     <!-- photo collection -->
     <div class="photos">
-      <h3>Add photos</h3>
-      <%= simple_form_for Photo.new, remote: true, url: create_photo_path do |f| %>
-        <div class="form-inputs">
-          <%= f.input :photo, label: false %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "crop and add" %>
-        </div>
-      <% end %>
-
+      <h3>Photos</h3>
       <div class="container">
         <div class="row">
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="col-4">
-            <div class="photo-cell"><i class="fas fa-plus"></i></div>
-          </div>
+          <% current_user.photos.each do |photo| %>
+            <div class="col-4">
+              <div class="photo-cell"><%= cl_image_tag photo.photo %></div>
+            </div>
+          <% end %>
+
+          <% (6 - current_user.photos.count).times do %>
+            <div class="col-4">
+              <div class="photo-cell empty">
+                <%= link_to new_photo_path, remote: true do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
+    </div>
+  </div>
 
+  <!-- middle -->
+  <div class="mid-settings">
+    <!-- user bio -->
+    <h3>User Bio</h3>
+    <%= link_to edit_bio_path, remote: true do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+    <i class="far fa-save save-bio"></i>
+    <div class="bio-cont">
+      <%= current_user.bio %>
     </div>
 
     <!-- range slider -->
@@ -54,23 +52,14 @@
         <span>1</span><span>100</span>
       </div>
     </div>
-  </div>
 
+
+  </div>
   <!-- right side -->
   <div class="right-settings">
-    <!-- user bio -->
-    <h3>User Bio</h3>
-    <div class="bio-cont">
-      <%= current_user.bio %>
-    </div>
-    <%= link_to edit_bio_path, remote: true do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-    <i class="far fa-save save-bio"></i>
-
     <!-- user media -->
     <div class="youtube-cont">
-      <p>YouTube</p>
+      <h4>YouTube</h4>
 
       <%= form_with(url: "/profiles/updateyoutube", method: "patch") do %>
         <%= label_tag(:youtube_id, "Enter YouTube ID:") %>
@@ -86,7 +75,7 @@
     </div>
 
     <div class="soundcloud-cont">
-      <p>SoundCloud</p>
+      <h4>SoundCloud</h4>
 
       <%= form_with(url: "/profiles/updatesoundcloud", method: "patch") do %>
         <%= label_tag(:soundcloud_url, "Enter soundcloud URL:") %>
@@ -98,9 +87,7 @@
         <iframe width="720" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=<%= current_user.sc_url %>"></iframe>
       </div>
     </div>
-
   </div>
-  <div class="sidebar"></div>
 </div>
 
 <!-- photo upload modal -->

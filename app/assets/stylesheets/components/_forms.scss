@@ -83,6 +83,15 @@
     cursor: pointer;
     text-decoration: none;
   }
+  &:disabled {
+    opacity: 0.2;
+    &:hover {
+      background-color: white;
+      color: black;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+  }
 }
 
 .form-control {
@@ -110,8 +119,7 @@
 .switch-label {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  margin-right: 16px;
+  margin: 0 16px 16px 16px;
 }
 
 .switch {
@@ -124,6 +132,11 @@
     width: 0;
     height: 0;
   }
+}
+
+.spinner-border {
+  margin-bottom: 16px;
+  visibility: hidden;
 }
 
 .slider {

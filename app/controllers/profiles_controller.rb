@@ -8,17 +8,13 @@ class ProfilesController < ApplicationController
     @location = Geocoder.search([current_user.latitude, current_user.longitude])
   end
 
-  def locate
-    current_user.update(latitude: params['latitude'], longitude: params['longitude'])
-  end
-
   def range
     current_user.update(range: params['range'].to_i)
   end
 
   def edit_bio
     @text = current_user.bio
-    puts @text
+
     respond_to do |format|
       format.js
     end
@@ -27,6 +23,7 @@ class ProfilesController < ApplicationController
   def save_bio
     @text = params[:text]
     current_user.update(bio: @text)
+
     respond_to do |format|
       format.js
     end
@@ -34,6 +31,7 @@ class ProfilesController < ApplicationController
 
   def update_youtube
     current_user.update(youtube_vid_id: params[:youtube_id])
+
     respond_to do |format|
       format.js
     end
@@ -41,6 +39,7 @@ class ProfilesController < ApplicationController
 
   def update_soundcloud
     @valid = current_user.update(sc_url: params[:soundcloud_url])
+
     respond_to do |format|
       format.js
     end
