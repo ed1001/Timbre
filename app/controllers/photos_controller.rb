@@ -10,16 +10,10 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
+    @photo.save!
 
-    if @photo.save!
-      respond_to do |format|
-        format.js
-      end
-    else
-      puts "There has been an error"
-      respond_to do |f|
-        format.js { render 'newphoto' }
-      end
+    respond_to do |format|
+      format.js
     end
   end
 

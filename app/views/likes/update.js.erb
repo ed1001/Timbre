@@ -19,9 +19,9 @@ var hideModal = () => {
     document.querySelector('.overlay').classList.remove('is-visible');
 }
 
-<% if @match %>
+<% if @like_info[:match] %>
 
-  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @opposed_user %>'
+  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @like_info[:opposed_user] %>'
 
   showModal();
 

@@ -26,6 +26,7 @@
                 as: :hidden,
                 required: true %>
     <div class="d-flex justify-content-end align-items-center">
+      <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
       <div class="switch-label">Allow geolocation services</div>
       <label class="switch">
         <input type="checkbox">
@@ -35,6 +36,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: 'form-btn' %>
+    <%= f.button :submit, "Sign up", class: 'form-btn', disabled: true %>
   </div>
 <% end %>
