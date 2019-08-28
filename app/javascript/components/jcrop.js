@@ -1,4 +1,4 @@
-import Jcrop from './jcrop'
+import Jcrop from '../../../node_modules/jcrop/'
 
 const target = document.getElementById('target');
 
