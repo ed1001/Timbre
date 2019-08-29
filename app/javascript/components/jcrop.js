@@ -1,17 +1,24 @@
-// import Jcrop from '../../../node_modules/jcrop/'
+import Jcrop from 'jcrop'
 
-// const target = document.getElementById('target');
+const jcropEvent = new Event('jcrop-init');
+const photoModal = document.querySelector('.photo-modal');
 
-// const initJcrop = () => {
-//   $('#target').Jcrop({
-//       onSelect: showCoords,
-//       onChange: showCoords
-//   });
-// }
+const listenForJcrop = () => {
+  photoModal.addEventListener('jcrop-init', ()=> {
+    initJcrop();
+  })
+}
 
-//   function showCoords(c)
-//   {
-//     console.log(c.x);
-//   };
+const initJcrop = () => {
+  $('#target').Jcrop({
+      onSelect: showCoords,
+      onChange: showCoords
+  });
+}
 
-// export { initJcrop }
+function showCoords(c)
+{
+  console.log(c.x);
+};
+
+export { listenForJcrop }
