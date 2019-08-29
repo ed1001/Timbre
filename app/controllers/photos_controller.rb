@@ -1,3 +1,5 @@
+require 'pry'
+
 class PhotosController < ApplicationController
   def new
     @photo = Photo.new
@@ -11,6 +13,10 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.user = current_user
     @photo.save!
+    width = @photo.photo.metadata['width']
+    height = @photo.photo.metadata['height']
+
+    @max_dimension = width > height ? 'width' : 'height'
 
     respond_to do |format|
       format.js

@@ -1,2 +1,7 @@
-<%= cl_image_tag(Photo.find(pic.id).photo.file.public_id,
-        width: 500, height: 700, crop: :fill, class: "d-block w-100") %>
+<% if max_dimension == 'width' %>
+  <%= cl_image_tag(pic.photo.metadata['public_id'],
+        width: 500, crop: :fill, class: "d-block", id: "target") %>
+<% else %>
+  <%= cl_image_tag(pic.photo.metadata['public_id'],
+        height: 500, crop: :fill, class: "d-block", id: "target") %>
+<% end %>

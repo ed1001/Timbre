@@ -5,7 +5,7 @@ import { swipe, initMedia } from '../components/swipe.js'
 import { selectSwitch } from '../components/geolocation.js'
 import { btnForm } from '../components/form.js'
 import { slider } from '../components/slider.js'
-// import { initJcrop } from '../components/jcrop.js'
+import { listenForJcrop } from '../components/jcrop.js'
 import { conversation, activateConversation } from '../components/conversation';
 // import { autoUpload } from '../components/photo';
 
@@ -21,6 +21,7 @@ switch (location.pathname) {
     swipe();
     break;
   case '/settings':
+    listenForJcrop();
     slider();
     // autoUpload();
     break;
@@ -32,3 +33,4 @@ switch (location.pathname) {
 }
 
 conversation();
+
