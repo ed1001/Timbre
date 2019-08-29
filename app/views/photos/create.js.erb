@@ -1,3 +1,6 @@
 var photoModal = document.querySelector('.photo-modal');
 
-photoModal.innerHTML = '<%= j render "photo_edit", pic: @photo %>'
+photoModal.innerHTML = '<%= j render "photo_edit", pic: @photo, max_dimension: @max_dimension %>'
+
+var jcropEvent = new Event('jcrop-init');
+photoModal.dispatchEvent(jcropEvent);
