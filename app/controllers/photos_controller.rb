@@ -1,5 +1,3 @@
-require 'pry'
-
 class PhotosController < ApplicationController
   def new
     @photo = Photo.new
