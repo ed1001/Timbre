@@ -1,6 +1,12 @@
 var photoModal = document.querySelector('.photo-modal');
 
+photoModal.classList.remove('is-visible');
 photoModal.innerHTML = '<%= j render "photo_edit", pic: @photo, max_dimension: @max_dimension %>'
 
 var jcropEvent = new Event('jcrop-init');
-photoModal.dispatchEvent(jcropEvent);
+
+var disEv = () => {
+  photoModal.dispatchEvent(jcropEvent);
+  photoModal.classList.add('is-visible');
+}
+setTimeout(disEv, 450);
