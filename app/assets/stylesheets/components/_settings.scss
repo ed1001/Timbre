@@ -1,4 +1,3 @@
-
 .settings-cnt {
   display: flex;
 }
@@ -30,7 +29,7 @@
 
 .photo-cell {
   height: 12em;
-  width: 10em;
+  width: 9em;
   img {
     height: 100%;
     width: 100%;
@@ -55,6 +54,15 @@
   }
 }
 
+.photo-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jcrop-photo {
+  margin-bottom: 24px;
+}
 
 .slider-cnt {
     display: flex;

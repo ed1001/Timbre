@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get '/newphoto', to: 'photos#new', as: :new_photo
   post '/createphoto', to: 'photos#create', as: :create_photo
+  patch '/updatephoto', to: 'photos#update', as: :update_photo
 
   post '/likes/update', to: 'likes#update'
 
