@@ -11,7 +11,9 @@
         <div class="row">
           <% current_user.photos.each do |photo| %>
             <div class="col-4">
-              <div class="photo-cell"><%= cl_image_tag photo.photo %></div>
+              <div class="photo-cell">
+                <%= render partial: "photo_cell", locals: {image: photo} %>
+              </div>
             </div>
           <% end %>
 

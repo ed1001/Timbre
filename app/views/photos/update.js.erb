@@ -1,0 +1,9 @@
+var photoModal = document.querySelector('.photo-modal');
+
+photoModal.classList.remove('is-visible');
+
+var photoEmpty = document.querySelector('.empty');
+photoEmpty.classList.remove('empty');
+photoEmpty.innerHTML = '<%= j render "profiles/photo_cell", image: @photo %>';
+
+
