@@ -1,12 +1,7 @@
 <div>
   <div class="jcrop-photo">
-    <% if max_dimension == 'width' %>
-      <%= cl_image_tag(pic.photo.metadata['public_id'],
-            width: 500, crop: :fill, id: "target") %>
-    <% else %>
-      <%= cl_image_tag(pic.photo.metadata['public_id'],
-            height: 500, crop: :fill, id: "target") %>
-    <% end %>
+      <%= cl_image_tag(pic.photo.metadata['public_id'], width: scaled_width,
+            height: scaled_height, crop: :fill, id: "target", data: {id: photo_id, scale: scale }) %>
   </div>
 
   <div class="crop-save form-btn">Crop and save</div>
