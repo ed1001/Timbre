@@ -12,7 +12,7 @@ burgerAnimate();
 
 switch (location.pathname) {
   case '/':
-    initJcrop();
+    //initJcrop();
     btnForm();
     selectSwitch();
     break;

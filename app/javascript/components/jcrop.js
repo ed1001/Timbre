@@ -1,4 +1,4 @@
-import Jcrop from 'jcrop'
+import Jcrop from 'Jcrop'
 
 const jcropEvent = new Event('jcrop-init');
 const photoModal = document.querySelector('.photo-modal');
