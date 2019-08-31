@@ -18,18 +18,22 @@
 }
 
 .photos {
-  height: 40rem;
-  background: white;
-  min-width: 35rem;
+  font-size: 1rem;
+  height: 36rem;
+  background-color: rgba(200, 200, 200, 0.8);
+  min-width: 25rem;
 }
 
 .col-4 {
   height: 14em;
+  display: flex;
+  justify-content: center;
 }
 
 .photo-cell {
-  height: 12em;
-  width: 9em;
+  height: 14.66em;
+  width: 11em;
+  min-width: 11em;
   img {
     height: 100%;
     width: 100%;
@@ -43,7 +47,7 @@
     align-items: center;
     color: red;
     i {
-      font-size: 28px;
+      font-size: 2em;
       opacity: 0.6;
       transition: opacity 0.2s;
         &:hover {
@@ -52,6 +56,10 @@
         }
     }
   }
+}
+
+.photo-row {
+  height: 32em;
 }
 
 .photo-modal {
@@ -195,5 +203,17 @@
   &:hover {
     cursor: pointer;
     opacity: 1;
+  }
+}
+
+@media (max-width: 2300px) {
+  .photos {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1830px) {
+  .photos {
+    font-size: 0.6rem;
   }
 }

@@ -1,5 +1,5 @@
 <!-- main container -->
-<div class="main">
+<div class="main" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('<%= cl_image_path 'cbuxtkiezaghqzx45my6', effect: 'grayscale', crop: :fill %>')">
   <!-- settins container -->
   <div class="settings-cnt">
 
@@ -10,7 +10,7 @@
       <div class="photos">
         <h3>Photos</h3>
         <div class="container">
-          <div class="row">
+          <div class="row photo-row">
             <% current_user.photos.each do |photo| %>
               <div class="col-4">
                 <div class="photo-cell">
