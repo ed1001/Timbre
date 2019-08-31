@@ -1,100 +1,105 @@
 <!-- main container -->
-<div class="settings-cnt">
+<div class="main">
+  <!-- settins container -->
+  <div class="settings-cnt">
 
-  <!-- left side -->
-  <div class="left-settings">
+    <!-- left side -->
+    <div class="left-settings">
 
-    <!-- photo collection -->
-    <div class="photos">
-      <h3>Photos</h3>
-      <div class="container">
-        <div class="row">
-          <% current_user.photos.each do |photo| %>
-            <div class="col-4">
-              <div class="photo-cell">
-                <%= render partial: "photo_cell", locals: {image: photo} %>
+      <!-- photo collection -->
+      <div class="photos">
+        <h3>Photos</h3>
+        <div class="container">
+          <div class="row">
+            <% current_user.photos.each do |photo| %>
+              <div class="col-4">
+                <div class="photo-cell">
+                  <%= render partial: "photo_cell", locals: {image: photo} %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
 
-          <% (6 - current_user.photos.count).times do %>
-            <div class="col-4">
-              <div class="photo-cell empty">
-                <%= link_to new_photo_path, remote: true do %>
-                  <i class="fas fa-plus" id="add-photo"></i>
-                <% end %>
+            <% (6 - current_user.photos.count).times do %>
+              <div class="col-4">
+                <div class="photo-cell empty">
+                  <%= link_to new_photo_path, remote: true do %>
+                    <i class="fas fa-plus" id="add-photo"></i>
+                  <% end %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- middle -->
+    <div class="mid-settings">
+      <!-- user bio -->
+      <h3>User Bio</h3>
+      <%= link_to edit_bio_path, remote: true do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+      <i class="far fa-save save-bio"></i>
+      <div class="bio-cont">
+        <%= current_user.bio %>
+      </div>
+
+      <!-- range slider -->
+      <h3>Range</h3>
+      <div class="slider-cnt">
+        <div class="range-slider">
+          <span id="rs-bullet" class="rs-label" style="left: <%= current_user.range * 578 / 100 %>px"><%= current_user.range %></span>
+          <input id="rs-range-line" class="rs-range" type="range" value="<%= current_user.range %>" min="1" max="100">
+        </div>
+        <div class="box-minmax">
+          <span>1</span><span>100</span>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- right side -->
+    <div class="right-settings">
+      <!-- user media -->
+      <div class="youtube-cont">
+        <h4>YouTube</h4>
+
+        <%= form_with(url: "/profiles/updateyoutube", method: "patch") do %>
+          <%= label_tag(:youtube_id, "Enter YouTube ID:") %>
+          <%= text_field_tag(:youtube_id) %>
+          <%= submit_tag("Save") %>
+        <% end %>
+
+        <div class="user-vid">
+          <iframe class="vid-frame" width="420" height="315"
+          src="https://www.youtube.com/embed/<%= current_user.youtube_vid_id %>">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="soundcloud-cont">
+        <h4>SoundCloud</h4>
+
+        <%= form_with(url: "/profiles/updatesoundcloud", method: "patch") do %>
+          <%= label_tag(:soundcloud_url, "Enter soundcloud URL:") %>
+          <%= text_field_tag(:soundcloud_url) %>
+          <%= submit_tag("Save") %>
+        <% end %>
+
+        <div class="user-sc">
+          <iframe width="720" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=<%= current_user.sc_url %>"></iframe>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- middle -->
-  <div class="mid-settings">
-    <!-- user bio -->
-    <h3>User Bio</h3>
-    <%= link_to edit_bio_path, remote: true do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-    <i class="far fa-save save-bio"></i>
-    <div class="bio-cont">
-      <%= current_user.bio %>
-    </div>
-
-    <!-- range slider -->
-    <h3>Range</h3>
-    <div class="slider-cnt">
-      <div class="range-slider">
-        <span id="rs-bullet" class="rs-label" style="left: <%= current_user.range * 578 / 100 %>px"><%= current_user.range %></span>
-        <input id="rs-range-line" class="rs-range" type="range" value="<%= current_user.range %>" min="1" max="100">
-      </div>
-      <div class="box-minmax">
-        <span>1</span><span>100</span>
-      </div>
-    </div>
-
-
-  </div>
-  <!-- right side -->
-  <div class="right-settings">
-    <!-- user media -->
-    <div class="youtube-cont">
-      <h4>YouTube</h4>
-
-      <%= form_with(url: "/profiles/updateyoutube", method: "patch") do %>
-        <%= label_tag(:youtube_id, "Enter YouTube ID:") %>
-        <%= text_field_tag(:youtube_id) %>
-        <%= submit_tag("Save") %>
-      <% end %>
-
-      <div class="user-vid">
-        <iframe class="vid-frame" width="420" height="315"
-        src="https://www.youtube.com/embed/<%= current_user.youtube_vid_id %>">
-        </iframe>
-      </div>
-    </div>
-
-    <div class="soundcloud-cont">
-      <h4>SoundCloud</h4>
-
-      <%= form_with(url: "/profiles/updatesoundcloud", method: "patch") do %>
-        <%= label_tag(:soundcloud_url, "Enter soundcloud URL:") %>
-        <%= text_field_tag(:soundcloud_url) %>
-        <%= submit_tag("Save") %>
-      <% end %>
-
-      <div class="user-sc">
-        <iframe width="720" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=<%= current_user.sc_url %>"></iframe>
-      </div>
-    </div>
-  </div>
+  <!-- photo upload modal -->
 </div>
-
-<!-- photo upload modal -->
-<div class="overlay"></div>
+<div class="overlay"><div class="spinner-border ml-auto" role="status" aria-hidden="true"></div></div>
 <div class="photo-modal"></div>
+
+
 
 
 

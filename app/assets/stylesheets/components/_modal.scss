@@ -1,6 +1,6 @@
 .blur {
   transition: 0.2s ease-in-out;
-  filter: blur(4px);
+  filter: blur(2px);
 }
 
 .match-modal {
@@ -114,7 +114,6 @@
 
 .overlay {
   z-index: 999;
-  pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
   position: fixed;
@@ -125,6 +124,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.3);
+  display: none;
 }
 
 .is-visible {

@@ -6,4 +6,5 @@ var photoEmpty = document.querySelector('.empty');
 photoEmpty.classList.remove('empty');
 photoEmpty.innerHTML = '<%= j render "profiles/photo_cell", image: @photo %>';
 
-
+document.querySelector('.main').classList.remove('blur');
+document.querySelector('.overlay').style.display = 'none';
