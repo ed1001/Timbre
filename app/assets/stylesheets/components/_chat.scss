@@ -7,16 +7,6 @@
   margin-bottom: 16px;
   padding-left: 0;
   border-radius: 3px;
-  // .display-no-message{
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  // }
-  h1 {
-    font-size: 30px;
-    padding: 0;
-    margin-left: 100px;
-  }
   h3 {
     font-size: 20px;
     font-style: italic;
@@ -26,6 +16,10 @@
   .home-btns{
     margin-left: 100px;
   }
+}
+
+.avatar {
+  border-radius: 50%;
 }
 
 .conversation-bar {
@@ -41,6 +35,19 @@
   width: 72%;
 }
 
+.empty-convo-cont {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    margin-top: 200px;
+    font-size: 70px;
+    padding: 50px;
+    text-align: center;
+  }
+}
+
 .conversation-display {
   width: 100%;
   height: 100%;
@@ -50,12 +57,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
-  h1 {
-    text-align: center;
-    margin: 0;
-    padding: 50px;
-  }
-
 }
 
 .conversation-topper {
@@ -152,7 +153,6 @@
   }
 }
 
-
 .conversation-box {
   min-width: 195px;
   display: flex;
@@ -170,6 +170,11 @@
   }
 }
 
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
 
 .conversation-box-new {
   background-color: rgba(234, 9, 9, 0.7);
@@ -187,6 +192,7 @@
 .conv-box {
   width: 100%;
   display: flex;
+
   flex-direction: column;
   justify-content: space-between;
   border-bottom: 1px solid rgba(190, 190, 190, 0.5);

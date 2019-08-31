@@ -2,6 +2,7 @@ class LikesController < ApplicationController
   def update
     # get details to render next user
     @next = params[:next]
+
     # add to avoid list
     current_user.avoids.build(opposed_user_id: params[:id]).save!
 

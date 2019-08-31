@@ -1,7 +1,12 @@
 var mediaCont = document.querySelector('.media-cont');
 var modalCont = document.querySelector('.match-modal');
+var mainCont = document.querySelector('.main');
 
-mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
+<% if @next != 'undefined' %>
+  mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
+<% else %>
+  mainCont.innerHTML = '<%= j render "profiles/no_users", user: @next %>'
+<% end %>
 
 var showModal = () => {
   document.querySelector('.main').classList.add('blur');

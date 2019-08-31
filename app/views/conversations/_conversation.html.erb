@@ -1,6 +1,6 @@
 <div class="conversation-topper">
   <div class="d-flex">
-    <%= cl_image_tag conversation.opposed_user(current_user).photos.first, height: 70, width: 70, crop: :fill, class: "avatar" %>
+    <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
     <div><%= conversation.opposed_user(current_user).user_name %></div>
   </div>
   <i class="fas fa-bars convo-top-info dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
