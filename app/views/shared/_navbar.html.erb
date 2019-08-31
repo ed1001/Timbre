@@ -4,21 +4,41 @@
     <span id="logo-name">Timbre</span>
   <% end %>
 
+
+  <!-- logic to find new mail -->
+  <% mail_class = '' %>
+
+  <% unless current_page?(conversations_path) %>
+    <% my_conversations = Conversation.where(recipient: current_user).or(Conversation.where(sender: current_user)) %>
+    <% if my_conversations.any? %>
+      <% my_conversations.each do |conversation| %>
+      <% r_Messages = conversation.messages.where.not(user: current_user) %>
+        <% if r_Messages.any? %>
+          <% r_Messages.each do |message| %>
+            <% if message.read == false %>
+              <% mail_class = 'mail-active' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <div class="d-flex">
       <div class="reveal-container">
         <div class="reveal-options">
           <% if user_signed_in? %>
             <%= link_to 'log out', destroy_user_session_path, method: :delete %>
             <%= link_to 'settings', settings_path %>
+            <%= link_to 'messages', conversations_path, id: 'messages-link', class: mail_class %>
           <% else %>
             <%= link_to 'login', show_form_path(option: "login"), remote: true %>
             <%= link_to 'sign up', show_form_path, remote: true, class: "signup-nav" %>
           <% end %>
           <a href="/">about us</a>
-          <a href="/">FAQS</a>
         </div>
       </div>
-      <div id="nav-burger">
+      <div id="nav-burger" class="<%= mail_class %>">
         <span></span>
         <span></span>
       </div>

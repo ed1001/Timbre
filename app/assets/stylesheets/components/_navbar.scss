@@ -43,6 +43,19 @@
   transition: .25s ease-in-out;
 }
 
+.mail-active {
+  span {
+    animation: pulse-span 4s infinite !important;
+  }
+
+}
+
+  #messages-link {
+    &.mail-active {
+      animation: pulse 4s infinite !important;
+    }
+  }
+
 #nav-burger span:nth-child(1) {
   top: 14px;
   transform-origin: left center;
@@ -63,6 +76,24 @@
   transform: rotate(-45deg);
   top: 29px;
   left: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    color: #000000;
+  }
+  50% {
+    color: #FF4136;
+  }
+}
+
+@keyframes pulse-span {
+  0% {
+    background-color: #000000;
+  }
+  50% {
+    background-color: #FF4136;
+  }
 }
 
 .reveal-container {
@@ -123,3 +154,12 @@
 .reveal-options.reveal-options-active {
   transform: translateX(-10%);
 }
+
+
+
+
+
+
+
+
+

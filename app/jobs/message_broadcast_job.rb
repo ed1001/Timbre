@@ -18,8 +18,8 @@ class MessageBroadcastJob < ApplicationJob
       conversation_id: message.conversation_id,
       user_id: message.user_id,
       message_id: message.id,
-      sender_name: "#{message.user.user_name}",
-      sender_photo: message.user.photos.first.photo,
+      sender_name: message.user.user_name.to_s,
+      sender_photo: photo_check(message),
       is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
     )
@@ -32,8 +32,8 @@ class MessageBroadcastJob < ApplicationJob
       conversation_id: message.conversation_id,
       user_id: message.user_id,
       message_id: message.id,
-      sender_name: "#{message.user.user_name}",
-      sender_photo: message.user.photos.first.photo,
+      sender_name: message.user.user_name.to_s,
+      sender_photo: photo_check(message),
       is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
     )
@@ -44,5 +44,9 @@ class MessageBroadcastJob < ApplicationJob
       partial: 'messages/message',
       locals: { message: message, user: user }
     )
+  end
+
+  def photo_check(message)
+    message.user.photos.any? ? message.user.photos.first.photo : nil
   end
 end
