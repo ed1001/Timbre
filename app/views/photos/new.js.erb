@@ -1,5 +1,28 @@
 var photoModal = document.querySelector('.photo-modal');
+var photoForm = document.querySelector('.new_photo');
 
-photoModal.innerHTML = '<%= j render "photo_form", photo: @photo %>'
+photoModal.innerHTML = '<%= j render "photo_form", photo: @photo %>';
+document.querySelector('.main').classList.add('blur');
+document.querySelector('.overlay').style.display = 'block';
 photoModal.classList.add('is-visible');
 
+var cropBtn = document.querySelector('.crop-btn')
+
+document.getElementById("photo_photo").addEventListener('change', (event) => {
+    cropBtn.disabled =  event.srcElement.value === "" ;
+})
+
+
+var actionListeners = () => {
+  var photoModal = document.querySelector('.photo-modal');
+  document.querySelector('.new_photo').addEventListener('submit', () => {
+    photoModal.classList.remove('is-visible');
+  });
+  document.querySelector('.photo-cancel').addEventListener('click', () => {
+    photoModal.classList.remove('is-visible');
+    document.querySelector('.main').classList.remove('blur');
+    document.querySelector('.overlay').style.display = 'none';
+  })
+}
+
+setTimeout(actionListeners, 500)

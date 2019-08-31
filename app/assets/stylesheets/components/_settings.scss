@@ -33,11 +33,11 @@
   img {
     height: 100%;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 3px;
   }
   &.empty {
-    border: 1.5px dotted black;
-    border-radius: 16px;
+    border: 0.5px dotted black;
+    border-radius: 3px;
     display: flex;
     justify-content: center;
     align-items: center;

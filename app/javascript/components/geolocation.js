@@ -1,9 +1,21 @@
 const signUpActive = [document.querySelector('.my-btn-right'), document.querySelector('.signup-nav')]
 
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (document.querySelector('.switch')) {
+        listenForSwitch();
+        observer.disconnect();
+      }
+    });
+ });
+
 const selectSwitch = () => {
   signUpActive.forEach((link) => {
     link.addEventListener('click', () => {
-      setTimeout(listenForSwitch, 100)
+      console.log('connect')
+      observer.observe(document.querySelector('.login-form'), {
+        childList: true,
+      });
     });
   });
 }

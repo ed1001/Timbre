@@ -1,11 +1,11 @@
-import Jcrop from 'Jcrop'
+import Jcrop from 'jcrop'
 
 const jcropEvent = new Event('jcrop-init');
 const photoModal = document.querySelector('.photo-modal');
 
 const listenForJcrop = () => {
-  console.log('dsfsfdsfsfdsfdsfsdfdsf');
   photoModal.addEventListener('jcrop-init', ()=> {
+    console.log('triggered');
     initJcrop();
   })
 }

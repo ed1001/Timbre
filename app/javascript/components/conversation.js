@@ -1,26 +1,29 @@
 const selectors = {
-  // envelope:  document.querySelector('.fa-envelope'),
+  burger:  document.getElementById('nav-burger'),
+  messagesLink:  document.getElementById('messages-link'),
   convBoxNew: document.querySelector('.conversation-box-new')
 }
-
 
 const conversation = () => {
   App.conversation = App.cable.subscriptions.create("ConversationChannel", {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
+      console.log('sdfdsfsfdsfsfdsfsfds')
 
     // select active convo and add to selectors object
     selectors['convActive'] = document.querySelector('.conversation-box-active');
     selectors['conversationBar'] = document.querySelector('.conversation-bar');
     selectors['newMessContain'] = document.querySelector('.new-message-container');
 
-    // make envelope red for notification
+    // make burger red for notification
     var userId = document.getElementById('conv-user-id').dataset.userId
     if (userId != data.user_id && location.pathname !== '/conversations') {
-      selectors['envelope'].classList.add('mail-active')
+      selectors['burger'].classList.add('mail-active');
+      selectors['messagesLink'].classList.add('mail-active');
     }else if (location.pathname === '/conversations' && data.is_new) {
-      selectors['envelope'].classList.add('mail-active')
+      selectors['burger'].classList.add('mail-active');
+      selectors['messagesLink'].classList.add('mail-active');;
     }
 
     // get raw text for preview in convo box
@@ -69,10 +72,11 @@ const conversation = () => {
         }
 
       } else {
-         // if convo is not already open make envelope red
+         // if convo is not already open make burger red
          document.querySelector(`.conv-preview-${conId}`).parentElement.parentElement.classList.add('conversation-box-new')
            if (userId != data.user_id) {
-              selectors['envelope'].classList.add('mail-active')
+              selectors['burger'].classList.add('mail-active');
+              selectors['messagesLink'].classList.add('mail-active');
             }
           }
         }
@@ -102,9 +106,11 @@ const conversation = () => {
 const activateConversation = () => {
   const convos = document.querySelectorAll('.conversation-box')
   if (document.querySelector('.conversation-box-new') == null) {
-        // selectors['envelope'].classList.remove('mail-active')
+        selectors['burger'].classList.remove('mail-active');
+        selectors['messagesLink'].classList.remove('mail-active');
       } else {
-        // selectors['envelope'].classList.add('mail-active')
+        selectors['burger'].classList.add('mail-active');
+        selectors['messagesLink'].classList.add('mail-active');
       }
   convos.forEach((convo) => {
     convo.addEventListener('click', () => {
@@ -114,9 +120,11 @@ const activateConversation = () => {
       convo.classList.add('conversation-box-active')
       convo.classList.remove('conversation-box-new')
       if (document.querySelector('.conversation-box-new') == null) {
-        // selectors['envelope'].classList.remove('mail-active')
+        selectors['burger'].classList.remove('mail-active');
+        selectors['messagesLink'].classList.remove('mail-active');
       } else {
-        // selectors['envelope'].classList.add('mail-active')
+        selectors['burger'].classList.add('mail-active');
+        selectors['messagesLink'].classList.add('mail-active');
       }
     })
   })

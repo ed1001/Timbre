@@ -1,5 +1,3 @@
-require 'pry'
-
 class PhotosController < ApplicationController
   def new
     @photo = Photo.new
@@ -14,11 +12,12 @@ class PhotosController < ApplicationController
     @photo.user = current_user
     @photo.save!
 
-    @photo_id = @photo.id
-
     width = @photo.photo.metadata['width']
     height = @photo.photo.metadata['height']
+    @photo.update_attribute(:width, width)
+    @photo.update_attribute(:height, height)
 
+    @photo_id = @photo.id
     @scale = 500.0 / [width, height].max
     @scaled_width = (width * @scale).to_i
     @scaled_height = (height * @scale).to_i
@@ -40,14 +39,6 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.js
     end
-
-    # send in ID of the photo to fetch it then set coords attributes with which you can then render the images in veiws like so:
-    # cl_image_tag("brown_sheep.jpg", :transformation=>[
-  # {:x=>355, :y=>410, :width=>300, :height=>200, :crop=>"crop"},
-  # {:width=>150, :height=>100, :crop=>"scale"}
-  # ])
-
-  # https://cloudinary.com/documentation/image_transformations
   end
 
   private
