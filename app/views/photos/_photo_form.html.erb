@@ -1,9 +1,14 @@
+<h1>Upload a photo</h1>
+
 <%= simple_form_for photo, remote: true, url: create_photo_path do |f| %>
-  <div class="form-inputs">
-    <%= f.input :photo, label: false %>
+  <div class="form-inputs d-flex">
+    <%= f.input :photo, label: 'Choose File', label_html: { class: 'modal-upload' } %>
+    <div class="filename-cont">
+      <p class="filename">no file selected</p>
+    </div>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "crop and add", class: "crop-btn" %>
-    <div class="photo-cancel">cancel</div>
+  <div class="form-actions d-flex">
+    <%= f.button :submit, "Crop and add", class: "crop-btn modal-submit", disabled: true %>
+    <div class="photo-cancel modal-cancel">Cancel</div>
   </div>
 <% end %>

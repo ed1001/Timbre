@@ -21,6 +21,7 @@ const initJcrop = () => {
 
   $('#target').Jcrop({
       aspectRatio: 3/4,
+      minSize: [30, 40],
       allowSelect: false,
       setSelect: select
   });

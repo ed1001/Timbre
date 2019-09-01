@@ -212,5 +212,41 @@ $green: #B1DA96;
 }
 
 .no-users {
-
+  animation: fade-in ease 1s forwards;
+  font-size: 1 rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  h1{
+    font-weight: 100;
+    animation: fade-in-up ease 4.4s forwards;
+    font-size: 5em;
+  }
+  a {
+    display: inline-block;
+    color: red;
+    animation: pulse-settings 2s infinite;
+    transition: all 0.5s;
+    &:hover {
+      text-shadow: 3px 3px 6px #000000;
+      transform: scale(1.05)
+    }
+  }
 }
+
+
+@keyframes pulse-settings {
+  0% {
+    color: #FFFFFF;
+  }
+  50% {
+    color: #FF4136;
+  }
+  100% {
+    color: #FFFFFF;
+  }
+}
+
