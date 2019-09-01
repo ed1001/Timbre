@@ -26,11 +26,11 @@ const listenForSwitch = () => {
 
   geoSwitch.addEventListener('change', () => {
     if (geoSwitch.checked) {
-      spinner.style.visibility = "visible";
+      spinner.style.display = "block";
       getLocation();
     } else {
       document.querySelector('.form-btn').disabled = true;
-      spinner.style.visibility = "hidden";
+      spinner.style.visibility = "none";
       document.querySelector('.user_latitude').firstElementChild.value = ''
       document.querySelector('.user_longitude').firstElementChild.value = ''
     }
@@ -51,7 +51,7 @@ const setCoords = (position) => {
   console.log(position.coords.longitude);
   document.querySelector('.user_latitude').firstElementChild.value = position.coords.latitude
   document.querySelector('.user_longitude').firstElementChild.value = position.coords.longitude
-  document.querySelector('.spinner-border').style.visibility = "hidden";
+  document.querySelector('.spinner-border').style.display = "none";
   document.querySelector('.form-btn').disabled = false;
 }
 

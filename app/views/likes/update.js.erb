@@ -5,7 +5,8 @@ var mainCont = document.querySelector('.main');
 <% if @next != 'undefined' %>
   mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
 <% else %>
-  mainCont.innerHTML = '<%= j render "profiles/no_users", user: @next %>'
+  console.log('last')
+  mainCont.innerHTML = '<%= j render "profiles/no_users", left: " left" %>'
 <% end %>
 
 var showModal = () => {

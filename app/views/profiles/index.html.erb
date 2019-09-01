@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(255,255,255,0.1)), url('<%= cl_image_path 'kiovux6qfy90v7zhjcxr', crop: :fill %>')">
   <% if @users.any? %>
     <div class="demo">
       <header class="demo__header"></header>
@@ -40,7 +40,7 @@
       </div>
     </div>
   <% else %>
-    <%= render "no_users" %>
+    <%= render partial: "no_users", locals: {left: ''} %>
   <% end %>
 </div>
 

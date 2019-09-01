@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def index
     @avoids = current_user.avoids.map { |avoid| avoid.opposed_user_id }
-    @users = User.all_except(current_user, @avoids, current_user.latitude, current_user.longitude, current_user.range)
+    @users = User.all_except(current_user, @avoids, current_user.latitude, current_user.longitude, current_user.range).shuffle
   end
 
   def settings

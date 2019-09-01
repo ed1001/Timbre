@@ -1,6 +1,24 @@
 .blur {
-  transition: 0.2s ease-in-out;
-  filter: blur(2px);
+  transition: 0.5s ease-in-out;
+  filter: blur(4px);
+}
+
+.spinner-modal {
+  background-color: $our-blue;
+  padding: 1rem;
+  color: white;
+  position: absolute;
+  font-size: 2rem;
+  width: 24rem;
+  top: 50vh;
+  left: calc(50vw - 12rem);
+  opacity: 0.9;
+  border-radius: 3px;
+  opacity: 0;
+  .spinner-grow {
+    margin-bottom: 3px;
+    margin-right: 6px;
+  }
 }
 
 .match-modal {
@@ -33,22 +51,7 @@
   border: 1px solid #888;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-submit, .modal-alert-submit {
+.modal-submit {
   width: 50%;
   color: $our-blue;
   font-weight: bold;
@@ -64,9 +67,20 @@
     color: white;
     cursor: pointer;
   }
+  &:disabled {
+    opacity: 0.3;
+    &:hover {
+      background-color: white;
+      color: $our-blue;
+      cursor: not-allowed;
+    }
+  }
+  &.modal-crop-submit{
+    width: 100%;
+  }
 }
 
-.modal-cancel, .modal-alert-cancel {
+.modal-cancel {
   width: 50%;
   color: rgba(234, 9, 9, 0.8);
   font-weight: bold;
@@ -84,13 +98,32 @@
   }
 }
 
+.modal-upload {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 5px 15px;
+  margin: 0 5px 5px 0;
+  text-align: center;
+  background-color: black;
+  transition: 0.3s ease;
+  &:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+
 .photo-modal {
   z-index: 1000;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
   position: absolute;
-  top: 50vh;
+  top: 40vh;
   left: 0;
   right: 0;
   max-width: 800px;
@@ -99,9 +132,39 @@
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-  font-size: 60px;
-  text-align: center;
   vertical-align: middle;
+  h1 {
+    font-size: 48px;
+    margin-bottom: 32px;
+  }
+}
+
+.new_photo {
+  width: 80%;
+}
+
+.form-control-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.filename-cont {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .move-up {

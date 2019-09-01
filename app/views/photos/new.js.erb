@@ -10,6 +10,8 @@ var cropBtn = document.querySelector('.crop-btn')
 
 document.getElementById("photo_photo").addEventListener('change', (event) => {
     cropBtn.disabled =  event.srcElement.value === "" ;
+    var fileText = document.querySelector(".form-control-file").value.replace(/C:\\fakepath\\/, '');
+    document.querySelector(".filename").innerText = fileText == '' ? 'no file selected' : fileText;
 })
 
 
@@ -17,6 +19,7 @@ var actionListeners = () => {
   var photoModal = document.querySelector('.photo-modal');
   document.querySelector('.new_photo').addEventListener('submit', () => {
     photoModal.classList.remove('is-visible');
+    document.querySelector('.spinner-modal').classList.add('move-up');
   });
   document.querySelector('.photo-cancel').addEventListener('click', () => {
     photoModal.classList.remove('is-visible');

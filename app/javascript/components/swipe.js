@@ -36,7 +36,9 @@ const swipe = () => {
       } else if (pullDeltaX <= -decisionVal) {
         $card.addClass("to-left");
         $card.remove();
-        var nextUser = document.querySelector('.demo__card-cont').lastElementChild.dataset.id;
+        if (document.querySelector('.demo__card-cont').children.length != 0) {
+          var nextUser = document.querySelector('.demo__card-cont').lastElementChild.dataset.id;
+        }
         var mydata = `id=${$card.data('id')}&next=${nextUser}&liked=false`
         Rails.ajax({
           url: "/likes/update",
