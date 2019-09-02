@@ -30,7 +30,7 @@ const listenForSwitch = () => {
       getLocation();
     } else {
       document.querySelector('.form-btn').disabled = true;
-      spinner.style.visibility = "none";
+      spinner.style.display = "none";
       document.querySelector('.user_latitude').firstElementChild.value = ''
       document.querySelector('.user_longitude').firstElementChild.value = ''
     }
@@ -39,16 +39,24 @@ const listenForSwitch = () => {
 
 const getLocation = () => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(setCoords);
+    console.log('before')
+    navigator.geolocation.getCurrentPosition(setCoords, failed);
+    console.log('after')
   } else {
     alert("Geolocation is not supported by this browser. Please choose location in settings");
   }
 }
 
+const failed = () => {
+  console.log('failed');
+}
+
 const setCoords = (position) => {
+  console.log('got to setCoords')
   var coordinates = `latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
   console.log(position.coords.latitude);
   console.log(position.coords.longitude);
+  console.log('got past setCoords')
   document.querySelector('.user_latitude').firstElementChild.value = position.coords.latitude
   document.querySelector('.user_longitude').firstElementChild.value = position.coords.longitude
   document.querySelector('.spinner-border').style.display = "none";

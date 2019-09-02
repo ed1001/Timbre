@@ -300,3 +300,14 @@ textarea.typing-area {
       outline: none;
     }
 }
+
+.type-indication {
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.type-indication-active {
+  opacity: 0.2;
+}

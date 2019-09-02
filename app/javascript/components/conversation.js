@@ -9,7 +9,6 @@ const conversation = () => {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
-      console.log('sdfdsfsfdsfsfdsfsfds')
 
     // select active convo and add to selectors object
     selectors['convActive'] = document.querySelector('.conversation-box-active');
@@ -88,7 +87,7 @@ const conversation = () => {
     }
   });
 
-  // add to preveiw text in convo box as it's being populated
+  // add to preview text in convo box as it's being populated
   // and reset text in textfield
   $(document).on('submit', '.new_message', function(e) {
     e.preventDefault();
@@ -128,6 +127,31 @@ const activateConversation = () => {
       }
     })
   })
+}
+
+const isTyping = () => {
+
+
+
+  const textarea = document.querySelector('.typing-area');
+  const typingStatus = document.querySelector('.type-indication');
+  const lastTypedTime = new Date(0);
+  const typingDelayMillis = 500;
+
+  const refreshTypingStatus = () => {
+      if (!textarea.is(':focus') || textarea.val() == '' || new Date().getTime() - lastTypedTime.getTime() > typingDelayMillis) {
+          typingStatus.html('No one is typing -blank space.');
+      } else {
+          typingStatus.html('User is typing...');
+      }
+  }
+  const updateLastTypedTime = () => {
+      lastTypedTime = new Date();
+  }
+
+  setInterval(refreshTypingStatus, 100);
+  textarea.keypress(updateLastTypedTime);
+  textarea.blur(refreshTypingStatus);
 }
 
 export { conversation, activateConversation }
