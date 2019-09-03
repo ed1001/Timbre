@@ -30,6 +30,7 @@
           <% if user_signed_in? %>
             <%= link_to 'log out', destroy_user_session_path, method: :delete %>
             <%= link_to 'settings', settings_path %>
+            <%= link_to 'discover', discover_path %>
             <%= link_to 'messages', conversations_path, id: 'messages-link', class: mail_class %>
           <% else %>
             <%= link_to 'login', show_form_path(option: "login"), remote: true %>
