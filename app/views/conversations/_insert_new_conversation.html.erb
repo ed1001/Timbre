@@ -1,5 +1,5 @@
 <%= link_to conversation_path(conversation), remote: true do %>
-  <div class="conversation-box">
+  <div class="conversation-box" data-user-id="<%= conversation.opposed_user(current_user).id %>">
       <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
     <div class="conv-box">
       <div class="conv-box-top">

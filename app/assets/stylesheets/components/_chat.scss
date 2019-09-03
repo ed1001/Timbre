@@ -226,6 +226,9 @@ a {
   font-style: italic;
   font-size: 12px;
   margin-bottom: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .conversation-box-active {

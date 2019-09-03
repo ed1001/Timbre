@@ -14,7 +14,7 @@
                 <% cClasses = "conversation-box conversation-box-new" %>
               <% end %>
             <% end %>
-            <div class="<%= cClasses %>">
+            <div class="<%= cClasses %>" data-user-id="<%= conversation.opposed_user(current_user).id %>">
               <% if conversation.opposed_user(current_user).photos.any? %>
                 <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
               <% else %>

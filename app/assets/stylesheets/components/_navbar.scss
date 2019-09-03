@@ -45,14 +45,14 @@
 
 .mail-active {
   span {
-    animation: pulse-span 4s infinite !important;
+    animation: pulse-span 2.3s infinite !important;
   }
 
 }
 
   #messages-link {
     &.mail-active {
-      animation: pulse 4s infinite !important;
+      animation: pulse 2.3s infinite !important;
     }
   }
 
@@ -84,7 +84,6 @@
   }
   50% {
     color: #FF4136;
-    text-shadow: 1px 1px 1px #FF4136;
   }
   100% {
     color: #000000;
@@ -97,7 +96,6 @@
   }
   50% {
     background-color: #FF4136;
-    box-shadow: 1px 1px 1px #FF4136;
   }
   100% {
     background-color: #000000;

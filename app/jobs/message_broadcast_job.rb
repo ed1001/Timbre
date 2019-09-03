@@ -47,6 +47,6 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   def photo_check(message)
-    message.user.photos.any? ? message.user.photos.first.photo : nil
+    message.user.photos.any? ? message.user.photos.first.photo.url : nil
   end
 end
