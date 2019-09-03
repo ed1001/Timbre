@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post '/likes/update', to: 'likes#update'
 
   post 'message/update', to: 'messages#update_message'
+  post 'message/status', to: 'messages#status'
 
   resources :conversations, only: [:index, :create, :show] do
     member do

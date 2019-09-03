@@ -14,4 +14,13 @@ class ConversationChannel < ApplicationCable::Channel
 
     Message.create(message_params)
   end
+
+  # simple enough to not use a seperate job class
+  def typing_status(status)
+    ActionCable.server.broadcast(
+      "conversations-#{status['user_id']}",
+      status: status['status'],
+      user_id: current_user.id
+    )
+  end
 end
