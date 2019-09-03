@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     root :to => 'profiles#index'
   end
 
-  # resources :profiles, only: [:show]
-
   get '/pages/chooseform', to: 'pages#choose_form'
   get '/showform', to: 'pages#show_form', as: :show_form
 
@@ -30,9 +28,6 @@ Rails.application.routes.draw do
   post 'message/status', to: 'messages#status'
 
   resources :conversations, only: [:index, :create, :show] do
-    member do
-      post :close
-    end
     resources :messages, only: [:create]
   end
 end
