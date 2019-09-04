@@ -72,7 +72,7 @@ const conversation = () => {
               id: data['message_id']
             }
             // ajax request to messages controller: update message
-            $.post('/message/update', message_id);
+            $.post('/messages/update', message_id);
           }
 
         } else {

@@ -18,14 +18,14 @@ Rails.application.routes.draw do
   patch '/profiles/updateyoutube', to: 'profiles#update_youtube', as: :update_youtube
   patch '/profiles/updatesoundcloud', to: 'profiles#update_soundcloud', as: :update_soundcloud
 
-  get '/newphoto', to: 'photos#new', as: :new_photo
-  post '/createphoto', to: 'photos#create', as: :create_photo
-  patch '/updatephoto', to: 'photos#update', as: :update_photo
+  get '/photos/new', to: 'photos#new', as: :new_photo
+  post '/photos/create', to: 'photos#create', as: :create_photo
+  patch '/photos/update', to: 'photos#update', as: :update_photo
 
   post '/likes/update', to: 'likes#update'
 
-  post 'message/update', to: 'messages#update_message'
-  post 'message/status', to: 'messages#status'
+  post 'messages/update', to: 'messages#update_message'
+  post 'messages/status', to: 'messages#status'
 
   resources :conversations, only: [:index, :create, :show] do
     resources :messages, only: [:create]

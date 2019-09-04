@@ -37,7 +37,7 @@ const initJcrop = () => {
     var imageCoords = `width=${width}&height=${height}&top=${top}&left=${left}&photo_id=${photoId}`
 
     Rails.ajax({
-      url: "/updatephoto",
+      url: "/photos/update",
       type: "patch",
       data: imageCoords
     });
