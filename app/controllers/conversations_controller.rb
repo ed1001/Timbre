@@ -20,7 +20,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.order(id: :asc)
     @messages.where(read: false).update_all(read: true)
-    # extract 'read' attribute/s to conversation instead of message so you only have to check one thing each time you update
+    # extract 'read' attribute/s to conversation instead of message so you only have to check one thing each time you update. Will leave until later as will take more time
     respond_to do |format|
       format.js
     end
