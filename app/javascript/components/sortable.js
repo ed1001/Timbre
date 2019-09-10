@@ -5,8 +5,19 @@ const initSortable = () => {
   Sortable.create(list, {
     ghostClass: "ghost",
     animation: 150,
+    draggable: ".sort",
+    filter: ".no-sort",
     onEnd: (event) => {
-      alert(`${event.oldIndex} moved to ${event.newIndex}`);
+      var positions = `old=${event.oldIndex}&new=${event.newIndex}`
+      console.log(event.oldIndex)
+      console.log(event.newIndex)
+      if (event.newIndex != event.oldIndex) {
+        Rails.ajax({
+          url: "/photos/update_position",
+          type: "patch",
+          data: positions
+        });
+      }
     }
   });
 };

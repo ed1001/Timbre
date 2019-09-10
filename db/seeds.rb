@@ -201,97 +201,113 @@ photo_hash = [
     user: users[0],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/peter1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).height,
+    position: 0
   },
   {
     user: users[1],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/beth1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/beth1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/beth1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/beth1.jpeg")).height,
+    position: 0
   },
   {
     user: users[2],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/roger1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/roger1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/roger1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/roger1.jpeg")).height,
+    position: 0
   },
   {
     user: users[3],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/kevin1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/kevin1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/kevin1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/kevin1.jpeg")).height,
+    position: 0
   },
   {
     user: users[4],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/danny1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/danny1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/danny1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/danny1.jpeg")).height,
+    position: 0
   },
   {
     user: users[5],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/tom1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tom1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tom1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tom1.jpeg")).height,
+    position: 0
   },
   {
     user: users[6],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/cyril1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/cyril1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/cyril1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/cyril1.jpeg")).height,
+    position: 0
   },
   {
     user: users[7],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/tara1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tara1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tara1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/tara1.jpeg")).height,
+    position: 0
   },
   {
     user: users[8],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simone1.jpeg")).height,
+    position: 0
   },
   {
     user: users[9],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/darryl1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/darryl1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/darryl1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/darryl1.jpeg")).height,
+    position: 0
   },
   {
     user: users[10],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/simon1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simon1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simon1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/simon1.jpeg")).height,
+    position: 0
   },
   {
     user: users[11],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/walter1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/walter1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/walter1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/walter1.jpeg")).height,
+    position: 0
   },
   {
     user: users[12],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/stuart1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/stuart1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/stuart1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/stuart1.jpeg")).height,
+    position: 0
   },
   {
     user: users[13],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/gerald1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/gerald1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/gerald1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/gerald1.jpeg")).height,
+    position: 0
   },
   {
     user: users[14],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/carl1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/carl1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/carl1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/carl1.jpeg")).height,
+    position: 0
   },
   {
     user: users[15],
     photo: File.open(Rails.root.join("db/fixtures/profile_photos/larry1.jpeg")),
     width: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/larry1.jpeg")).width,
-    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/larry1.jpeg")).height
+    height: MiniMagick::Image.open(Rails.root.join("db/fixtures/profile_photos/larry1.jpeg")).height,
+    position: 0
   }
 ]
 

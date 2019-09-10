@@ -30,11 +30,11 @@ const initJcrop = () => {
     var getCoords = document.querySelector('.jcrop-holder').firstElementChild.style;
     var width = parseInt(getCoords.width) / scale;
     var height = parseInt(getCoords.height) / scale;
-    var top = parseInt(getCoords.top) / scale;
-    var left = parseInt(getCoords.left) / scale;
+    var y = parseInt(getCoords.top) / scale;
+    var x = parseInt(getCoords.left) / scale;
     console.log(top)
 
-    var imageCoords = `width=${width}&height=${height}&top=${top}&left=${left}&photo_id=${photoId}`
+    var imageCoords = `width=${width}&height=${height}&y=${y}&x=${x}&photo_id=${photoId}`
 
     Rails.ajax({
       url: "/photos/update",

@@ -1,7 +1,7 @@
 var photoModal = document.querySelector('.photo-modal');
 var jcropEvent = new Event('jcrop-init');
 
-photoModal.innerHTML = '<%= j render "photo_edit", pic: @photo, scaled_width: @scaled_width, scaled_height: @scaled_height, photo_id: @photo_id, scale: @scale %>'
+photoModal.innerHTML = '<%= j render "photo_edit", pic: @photo, scaled_width: @scaled_width, scaled_height: @scaled_height, photo_id: @photo.id, scale: @scale %>'
 photoModal.dispatchEvent(jcropEvent);
 
 document.querySelector('.spinner-modal').classList.add('move-down');
