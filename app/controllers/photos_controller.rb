@@ -15,10 +15,11 @@ class PhotosController < ApplicationController
     width = @photo.photo.metadata['width']
     height = @photo.photo.metadata['height']
     # metadata is lost after upload so need to add to attributes here
-    # also need to have this updated in Update below to display the photo correctly
+    # also need to have this updated in Update below to display the photo correctly, the metadata would be fixed values even if we had them after upload
     # with one single update call it doesn't work, says 'photo is missing' so needed to do by attribute, *find out why*
-    @photo.update_attribute(:width, width)
-    @photo.update_attribute(:height, height)
+    # @photo.update_attribute(:width, width)
+    # @photo.update_attribute(:height, height)
+    @photo.update(width: width, height: height)
 
     @photo_id = @photo.id
     @scale = 500.0 / [width, height].max

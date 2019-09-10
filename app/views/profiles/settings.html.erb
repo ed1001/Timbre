@@ -11,12 +11,14 @@
         <h3>Photos</h3>
         <div class="container">
           <div class="row photo-row">
+            <% pos = 0 %>
             <% current_user.photos.each do |photo| %>
               <div class="col-4">
                 <div class="photo-cell">
-                  <%= render partial: "photo_cell", locals: {image: photo} %>
+                  <%= render partial: "photo_cell", locals: {image: photo, position: pos} %>
                 </div>
               </div>
+              <% pos += 1 %>
             <% end %>
 
             <% (6 - current_user.photos.count).times do %>

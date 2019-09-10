@@ -22,7 +22,8 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.order(id: :asc)
     # cant seem to update and query at the same time, calling update seperately below
-    @messages.update_all(read: true)
+    @messages.where(read: false)update_all(read: true)
+    # extract 'read' attribute/s to conversation instead of message so you only have to check one thing each time you update
     respond_to do |format|
       format.js
     end
