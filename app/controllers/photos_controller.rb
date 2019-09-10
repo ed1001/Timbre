@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
 
     width = @photo.photo.metadata['width']
     height = @photo.photo.metadata['height']
+    # metadata is lost after upload so need to add to attributes here
     @photo.update_attribute(:width, width)
     @photo.update_attribute(:height, height)
 

@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  # skip_after_action :verify_authorized
 
   def index
     @users = User.all.where.not(id: current_user)
@@ -22,6 +21,8 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.order(id: :asc)
+    # cant seem to update and query at the same time, calling update seperately below
+    @messages.update_all(read: true)
     respond_to do |format|
       format.js
     end
