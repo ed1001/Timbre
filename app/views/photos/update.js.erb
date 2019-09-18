@@ -4,7 +4,9 @@ photoModal.classList.remove('is-visible');
 
 var photoEmpty = document.querySelector('.empty');
 photoEmpty.classList.remove('empty');
-photoEmpty.innerHTML = '<%= j render "profiles/photo_cell", image: @photo %>';
+photoEmpty.parentElement.classList.remove('no-sort');
+photoEmpty.parentElement.classList.add('sort');
+photoEmpty.innerHTML = '<%= j render "profiles/photo_cell", image: @photo, position: @photo.position %>';
 
 document.querySelector('.main').classList.remove('blur');
 document.querySelector('.overlay').style.display = 'none';

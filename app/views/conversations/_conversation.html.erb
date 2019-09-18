@@ -9,11 +9,11 @@
   </div>
   <i class="fas fa-bars convo-top-info dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messageDropdown">
-</div>
+  </div>
 </div>
 
 <% @messages.each do |message| %>
-  <% if current_user == message.user %>
+  <% if current_user == message.sender %>
     <div class="comment bubble-right" data-message-id="<%= message.id %>">
   <% else %>
     <div class="comment bubble-left" data-message-id="<%= message.id %>">

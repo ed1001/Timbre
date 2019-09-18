@@ -11,16 +11,18 @@
         <h3>Photos</h3>
         <div class="container">
           <div class="row photo-row">
-            <% current_user.photos.each do |photo| %>
-              <div class="col-4">
+            <% pos = 0 %>
+            <% @photos.each do |photo| %>
+              <div class="col-4 sort">
                 <div class="photo-cell">
                   <%= render partial: "photo_cell", locals: {image: photo} %>
                 </div>
               </div>
+              <% pos += 1 %>
             <% end %>
 
             <% (6 - current_user.photos.count).times do %>
-              <div class="col-4">
+              <div class="col-4 no-sort">
                 <div class="photo-cell empty">
                   <%= link_to new_photo_path, remote: true do %>
                     <i class="fas fa-plus" id="add-photo"></i>

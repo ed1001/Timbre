@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :avoids, dependent: :destroy
   has_many :matches, dependent: :destroy
+  has_many :conversations, ->(user) { unscope(where: :user_id).where("sender_id = ? OR recipient_id = ?", user.id, user.id) }, class_name: 'Conversation', dependent: :destroy
 
   validates :user_name, presence: true
   validates :email, presence: true

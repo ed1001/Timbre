@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+  # max width/height for crop photo disply
+  CROP_DIMENSION = 500.0
+
   def new
     @photo = Photo.new
 
@@ -9,16 +12,13 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    @photo.user = current_user
-    @photo.save!
+    @photo.update(position: current_user.photos.count, user: current_user)
 
     width = @photo.photo.metadata['width']
     height = @photo.photo.metadata['height']
-    @photo.update_attribute(:width, width)
-    @photo.update_attribute(:height, height)
+    @photo.update(width: width, height: height)
 
-    @photo_id = @photo.id
-    @scale = 500.0 / [width, height].max
+    @scale = CROP_DIMENSION / [width, height].max
     @scaled_width = (width * @scale).to_i
     @scaled_height = (height * @scale).to_i
 
@@ -29,15 +29,22 @@ class PhotosController < ApplicationController
 
   def update
     @photo = Photo.find(params[:photo_id].to_i)
-    @photo.width = params[:width]
-    @photo.height = params[:height]
-    @photo.x = params[:left]
-    @photo.y = params[:top]
-
-    @photo.save!
+    @photo.update(update_params)
 
     respond_to do |format|
       format.js
+    end
+  end
+
+  def update_position
+    new_pos = params['new'].to_i
+    old_pos = params['old'].to_i
+
+    photos = photo_range([new_pos, old_pos]).to_a
+    if new_pos < old_pos
+      shuffle_up(photos, new_pos, old_pos)
+    elsif new_pos > old_pos
+      shuffle_down(photos, new_pos, old_pos)
     end
   end
 
@@ -45,5 +52,23 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:photo)
+  end
+
+  def update_params
+    params.permit(:width, :height, :x, :y)
+  end
+
+  def photo_range(pos)
+    Photo.where(user: current_user, position: pos.min..pos.max).order(position: :asc)
+  end
+
+  def shuffle_up(photos, new_pos, old_pos)
+    photos.pop.update(position: new_pos)
+    photos.each { |photo| photo.increment!(:position) }
+  end
+
+  def shuffle_down(photos, new_pos, old_pos)
+    photos.shift.update(position: new_pos)
+    photos.each { |photo| photo.decrement!(:position) }
   end
 end
