@@ -37,7 +37,6 @@ const conversation = () => {
 
       // add new convo box if new convo
       var conId = data['conversation_id'].toString()
-      console.log(data['sender_photo'])
       if (data.is_new && location.pathname === '/conversations') {
         document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', `
           <a data-remote="true" href="/conversations/${conId}">
@@ -184,7 +183,6 @@ const listenForTextarea = () => {
 
 const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-        console.log(mutation);
       if ($('.typing-area')) {
         listenForTextarea();
         observer.disconnect();

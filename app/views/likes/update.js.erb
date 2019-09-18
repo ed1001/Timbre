@@ -5,7 +5,6 @@ var mainCont = document.querySelector('.main');
 <% if @next != 'undefined' %>
   mediaCont.innerHTML = '<%= j render "likes/user_media", user: @next %>'
 <% else %>
-  console.log('last')
   mainCont.innerHTML = '<%= j render "profiles/no_users", left: " left" %>'
 <% end %>
 

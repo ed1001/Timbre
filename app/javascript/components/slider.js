@@ -4,7 +4,6 @@ const rangeBullet = document.getElementById("rs-bullet");
 const slider = () => {
 
   rangeSlider.addEventListener('mouseup', () => {
-    console.log(rangeBullet.innerText);
     var mydata = `range=${rangeBullet.innerText}`
     Rails.ajax({
       url: "/profiles/range",
