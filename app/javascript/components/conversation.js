@@ -19,7 +19,6 @@ const conversation = () => {
       }
     } else if (data['message']) {
 
-
       // make burger red for notification
       var userId = document.getElementById('conv-user-id').dataset.userId
       if (userId != data.user_id && location.pathname !== '/conversations') {

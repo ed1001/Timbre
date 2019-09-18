@@ -12,7 +12,7 @@
     <% my_conversations = Conversation.where(recipient: current_user).or(Conversation.where(sender: current_user)) %>
     <% if my_conversations.any? %>
       <% my_conversations.each do |conversation| %>
-      <% r_Messages = conversation.messages.where.not(user: current_user) %>
+      <% r_Messages = conversation.messages.where.not(sender: current_user) %>
         <% if r_Messages.any? %>
           <% r_Messages.each do |message| %>
             <% if message.read == false %>

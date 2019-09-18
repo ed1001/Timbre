@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
   def settings
     @location = Geocoder.search([current_user.latitude, current_user.longitude])
     @photos = current_user.photos.order(position: :asc)
-    puts @photos
   end
 
   def range

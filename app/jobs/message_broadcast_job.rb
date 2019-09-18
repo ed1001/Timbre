@@ -2,7 +2,7 @@ class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(message)
-    sender = message.user
+    sender = message.sender
     recipient = message.conversation.opposed_user(sender)
 
     broadcast_to_sender(sender, message)
@@ -18,7 +18,7 @@ class MessageBroadcastJob < ApplicationJob
       conversation_id: message.conversation_id,
       user_id: message.user_id,
       message_id: message.id,
-      sender_name: message.user.user_name.to_s,
+      sender_name: message.sender.user_name.to_s,
       sender_photo: photo_check(message),
       is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
@@ -32,7 +32,7 @@ class MessageBroadcastJob < ApplicationJob
       conversation_id: message.conversation_id,
       user_id: message.user_id,
       message_id: message.id,
-      sender_name: message.user.user_name.to_s,
+      sender_name: message.sender.user_name.to_s,
       sender_photo: photo_check(message),
       is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
@@ -47,6 +47,6 @@ class MessageBroadcastJob < ApplicationJob
   end
 
   def photo_check(message)
-    message.user.photos.any? ? message.user.photos.first.photo.url : nil
+    message.sender.photos.any? ? message.sender.photos.first.photo.url : nil
   end
 end

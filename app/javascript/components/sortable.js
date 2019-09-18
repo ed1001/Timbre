@@ -9,8 +9,6 @@ const initSortable = () => {
     filter: ".no-sort",
     onEnd: (event) => {
       var positions = `old=${event.oldIndex}&new=${event.newIndex}`
-      console.log(event.oldIndex)
-      console.log(event.newIndex)
       if (event.newIndex != event.oldIndex) {
         Rails.ajax({
           url: "/photos/update_position",
