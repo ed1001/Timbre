@@ -15,7 +15,7 @@
             <% @photos.each do |photo| %>
               <div class="col-4 sort">
                 <div class="photo-cell">
-                  <%= render partial: "photo_cell", locals: {image: photo, position: pos} %>
+                  <%= render partial: "photo_cell", locals: {image: photo} %>
                 </div>
               </div>
               <% pos += 1 %>
