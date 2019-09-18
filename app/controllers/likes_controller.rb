@@ -4,9 +4,9 @@ class LikesController < ApplicationController
     @next = params[:next]
 
     # add to avoid list
-    current_user.avoids.build(like_params).save!
+    current_user.avoids.build(avoid_params).save!
 
-    @like_info = Like.process(params[:liked] == 'true', params[:id], current_user)
+    @like_info = Like.process(like_params, current_user)
 
     respond_to do |format|
       format.js
@@ -15,7 +15,11 @@ class LikesController < ApplicationController
 
   private
 
+  def avoid_params
+    params.permit(:opposed_user_id)
+  end
+
   def like_params
-    params.permit(:id)
+    params.permit(:liked, :opposed_user_id)
   end
 end

@@ -2,15 +2,15 @@ class Like < ApplicationRecord
   belongs_to :user
 
   class << self
-    def process(liked, id, current_user)
+    def process(like_params, current_user)
       like_info = {}
-      if liked
+      if like_params[:liked]
         # you liked them, check if opposed user has come across you
-        find_like = Like.find_by(user_id: id, opposed_user_id: current_user.id)
-        sort_like(find_like, id, current_user, like_info)
+        find_like = Like.find_by(user_id: like_params[:opposed_user_id], opposed_user_id: current_user.id)
+        sort_like(find_like, like_params[:opposed_user_id], current_user, like_info)
       else
         # you didn't like them, add to likes array, liked: false
-        current_user.likes.build(opposed_user_id: id, liked: false).save!
+        current_user.likes.build(opposed_user_id: like_params[:opposed_user_id], liked: false).save!
       end
       like_info
     end

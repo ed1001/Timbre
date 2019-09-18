@@ -27,7 +27,7 @@ const swipe = () => {
         if (document.querySelector('.demo__card-cont').children.length != 0) {
           var nextUser = document.querySelector('.demo__card-cont').lastElementChild.dataset.id;
         }
-        var mydata = `id=${$card.data('id')}&next=${nextUser}&liked=true`
+        var mydata = `opposed_user_id=${$card.data('id')}&next=${nextUser}&liked=true`
         Rails.ajax({
           url: "/likes/update",
           type: "POST",
@@ -39,7 +39,7 @@ const swipe = () => {
         if (document.querySelector('.demo__card-cont').children.length != 0) {
           var nextUser = document.querySelector('.demo__card-cont').lastElementChild.dataset.id;
         }
-        var mydata = `id=${$card.data('id')}&next=${nextUser}&liked=false`
+        var mydata = `opposed_user_id=${$card.data('id')}&next=${nextUser}&liked=false`
         Rails.ajax({
           url: "/likes/update",
           type: "POST",

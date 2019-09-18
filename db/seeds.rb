@@ -2,10 +2,7 @@ require 'mini_magick'
 
 puts 'cleaning DB...'
 
-Message.delete_all
-Conversation.delete_all
 User.destroy_all
-Photo.destroy_all
 
 puts 'creating users...'
 

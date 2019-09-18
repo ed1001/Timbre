@@ -10,7 +10,7 @@ class ConversationsController < ApplicationController
     @is_new_conversation = @conversation.id.nil?
     @conversation.save!
     message = Message.new(body: params[:conversation][:content])
-    message.update(conversation: @conversation, user: current_user)
+    message.update(conversation: @conversation, sender: current_user)
     respond_to do |format|
       format.js
     end
