@@ -9,7 +9,7 @@
     "lodash": "^4.17.15",
     "lodash.template": "^4.5.0",
     "popper.js": "^1.15.0",
-    "sortablejs": "^1.10.0-rc3"
+    "sortablejs": "1.9"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"

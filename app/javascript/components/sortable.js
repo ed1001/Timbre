@@ -1,8 +1,7 @@
 import Sortable from 'sortablejs';
 
 const initSortable = () => {
-  const list = document.querySelector('.photo-row');
-  Sortable.create(list, {
+  Sortable.create(document.querySelector('.photo-row'), {
     ghostClass: "ghost",
     animation: 150,
     draggable: ".sort",
@@ -16,6 +15,9 @@ const initSortable = () => {
           data: positions
         });
       }
+    },
+    onMove: function(e) {
+      return !e.related.classList.contains('no-sort');
     }
   });
 };
