@@ -42,9 +42,9 @@ class PhotosController < ApplicationController
 
     photos = photo_range([new_pos, old_pos]).to_a
     if new_pos < old_pos
-      shuffle_up(photos, new_pos, old_pos)
+      shuffle_up(photos, new_pos)
     elsif new_pos > old_pos
-      shuffle_down(photos, new_pos, old_pos)
+      shuffle_down(photos, new_pos)
     end
   end
 
@@ -62,13 +62,13 @@ class PhotosController < ApplicationController
     Photo.where(user: current_user, position: pos.min..pos.max).order(position: :asc)
   end
 
-  def shuffle_up(photos, new_pos, old_pos)
-    photos.pop.update(position: new_pos)
+  def shuffle_up(photos, new_pos)
+    photos.pop.update_attribute('position', new_pos)
     photos.each { |photo| photo.increment!(:position) }
   end
 
-  def shuffle_down(photos, new_pos, old_pos)
-    photos.shift.update(position: new_pos)
+  def shuffle_down(photos, new_pos)
+    photos.shift.update_attribute('position', new_pos)
     photos.each { |photo| photo.decrement!(:position) }
   end
 end
