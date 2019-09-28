@@ -1,8 +1,20 @@
 <div class="container">
-  <div class="match-bar">
-
-  </div>
-  <div class="container-conversation" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'lmvtemkcyjxacb6nvx17', crop: :fill %>')">
+  <% chat_margin = '16px' %>
+  <% if @matches.any? %>
+    <% chat_margin = '0px' %>
+    <div class="match-bar">
+      <span class="match-text">New matches</span>
+      <div class="match-content">
+        <% @matches.each do |match| %>
+          <div class="match-box">
+            <%= cl_image_tag match.photos.first.photo, height: 45, width: 45, crop: :fill, class: "avatar" %>
+            <span><%= match.user_name %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div class="container-conversation" style="margin-top: <%= chat_margin %> ; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'lmvtemkcyjxacb6nvx17', crop: :fill %>')">
     <% if @conversations.length > 0 %>
       <div class="conversation-bar">
         <% @conversations.each do |conversation| %>
@@ -30,11 +42,7 @@
                   </p>
                 </div>
                 <p class="conv-preview <%=" conv-preview-#{conversation.id}"%>">
-                  <% if conversation.messages.last.body.length < 25 %>
                     <%= conversation.messages.last.body %>
-                  <% else %>
-                    <%= conversation.messages.last.body[0..25] %>...
-                  <% end %>
                 </p>
               </div>
             </div>

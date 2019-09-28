@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
 
   def index
-    @users = User.all.where.not(id: current_user)
+    @matches = Match.fetch_matches(current_user)
     @conversations = Conversation.where(recipient_id: current_user.id).or(Conversation.where(sender_id: current_user.id))
   end
 
