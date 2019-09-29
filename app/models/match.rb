@@ -4,7 +4,7 @@ class Match < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :opposed_user_id }
 
-  def self.fetch_matches(user)
+  def self.fetch_new_matches(user)
     user.matches.map do |match|
       match.user == user ? match.opposed_user : match.user
     end
