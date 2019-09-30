@@ -9,10 +9,7 @@
       <p class="conv-preview <%="conv-preview-#{conversation.id}"%>">
         <% if conversation.messages.last.body.length < 25 %>
           <%= conversation.messages.last.body %>
-        <% else %>
-          <%= conversation.messages.last.body[0..25] %>...
-        <% end %>
-        </p>
+      </p>
     </div>
   </div>
 <% end %>
