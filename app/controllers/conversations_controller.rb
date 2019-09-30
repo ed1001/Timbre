@@ -1,14 +1,11 @@
 class ConversationsController < ApplicationController
-
   def index
-    @users = User.all.where.not(id: current_user)
-    @conversations = Conversation.where(recipient_id: current_user.id).or(Conversation.where(sender_id: current_user.id))
+    @matches = Match.fetch_new_matches(current_user)
+    @conversations = Conversation.fetch_conversations(current_user)
   end
 
   def create
-    @conversation = Conversation.get(current_user.id, params[:user_id])
-    @is_new_conversation = @conversation.id.nil?
-    @conversation.save!
+    @conversation = Conversation.check_conversation(current_user, User.find(params[:user_id]))
     message = Message.new(message_params)
     message.update(conversation: @conversation, sender: current_user)
 
