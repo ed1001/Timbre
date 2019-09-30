@@ -1,11 +1,11 @@
 <div class="container">
   <% chat_margin = '16px' %>
-  <% if @matches.any? %>
+  <% if @new_matches.any? %>
     <% chat_margin = '0px' %>
     <div class="match-bar">
       <span class="match-text">New matches</span>
       <div class="match-content">
-        <% @matches.each do |match| %>
+        <% @new_matches.each do |match| %>
           <div class="match-box">
             <%= cl_image_tag match.photos.first.photo, height: 45, width: 45, crop: :fill, class: "avatar" %>
             <span><%= match.user_name %></span>

@@ -285,6 +285,7 @@ a {
 }
 
 .conv-preview {
+  max-width: 75%;
   color: $our-grey;
   opacity: 0.6;
   font-style: italic;
@@ -293,6 +294,7 @@ a {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: block;
 }
 
 .conversation-box-active {

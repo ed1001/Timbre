@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   def index
-    @matches = Match.fetch_new_matches(current_user)
+    @new_matches = Match.fetch_new_matches(current_user)
     @conversations = Conversation.fetch_conversations(current_user)
   end
 
