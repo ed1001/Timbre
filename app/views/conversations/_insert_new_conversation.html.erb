@@ -7,7 +7,6 @@
         <p class="conv-time"> <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %></p>
       </div>
       <p class="conv-preview <%="conv-preview-#{conversation.id}"%>">
-        <% if conversation.messages.last.body.length < 25 %>
           <%= conversation.messages.last.body %>
       </p>
     </div>

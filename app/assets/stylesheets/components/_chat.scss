@@ -1,12 +1,75 @@
+.match-bar {
+  position: relative;
+  background-color: gray;
+  border-radius: 3px 3px 0 0;
+  .match-text {
+    position: absolute;
+    top: 4px;
+    left: 30px;
+    font-size: 12px;
+  }
+  &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      bottom: 15px;
+      pointer-events: none;
+      background-image: linear-gradient(to right, rgba(255,255,255,0), gray 85%);
+      width: 2%;
+      height: 100%;
+      border-radius: 0 3px 0 0;
+    }
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 15px;
+    pointer-events: none;
+    background-image: linear-gradient(to left, rgba(255,255,255,0), gray 85%);
+    width: 2%;
+    height: 100%;
+    border-radius: 3px 0 0 0;
+  }
+  .match-content {
+    display: flex;
+    margin-top: 16px;
+    padding: 28px 12px 12px 24px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.match-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 70px;
+  padding: 0 4px 0 4px;
+  font-size: 8px;
+  span {
+    max-width: 100%;
+    margin-top: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+  }
+}
+
 .container-conversation {
   display: flex;
   height: 90vh;
   background-size: cover;
   background-position: center;
-  margin-top: 16px;
   margin-bottom: 16px;
   padding-left: 0;
-  border-radius: 3px;
+  border-radius: 0 0 3px 3px;
   h3 {
     font-size: 20px;
     font-style: italic;
@@ -20,6 +83,7 @@
 
 .avatar {
   border-radius: 50%;
+  border: 1px double white;
 }
 
 .conversation-bar {
@@ -28,7 +92,7 @@
   background-color: rgba(255,255,255,0.3);
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: 3px 0 0 3px;
+  border-radius: 0 0 0 3px;
 }
 
 .conv-display-container {
@@ -247,10 +311,6 @@ a {
 
 .message-received {
   background-color: $our-blue;
-}
-
-.send-icon {
-
 }
 
 textarea.typing-area {
