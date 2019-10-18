@@ -63,12 +63,16 @@ class PhotosController < ApplicationController
   end
 
   def shuffle_up(photos, new_pos)
-    photos.pop.update_attribute('position', new_pos)
-    photos.each { |photo| photo.increment!(:position) }
+    Photo.transaction do
+      photos.pop.update_attribute('position', new_pos)
+      photos.each { |photo| photo.increment!(:position) }
+    end
   end
 
   def shuffle_down(photos, new_pos)
-    photos.shift.update_attribute('position', new_pos)
-    photos.each { |photo| photo.decrement!(:position) }
+    Photo.transaction do
+      photos.shift.update_attribute('position', new_pos)
+      photos.each { |photo| photo.decrement!(:position) }
+    end
   end
 end
