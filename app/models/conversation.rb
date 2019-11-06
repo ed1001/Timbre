@@ -17,6 +17,11 @@ class Conversation < ApplicationRecord
       .select { |convo| convo.messages.any? }
   end
 
+  def self.fetch_new_matches(user)
+    user.conversations.reject { |convo| convo.messages.any? }
+        .map { |convo| convo.sender == user ? convo.recipient : convo.sender }
+  end
+
   def self.check_conversation(sender, recipient)
     Conversation.between(sender, recipient).first_or_create do |convo|
       convo.sender = sender

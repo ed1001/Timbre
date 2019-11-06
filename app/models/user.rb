@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :avoids, dependent: :destroy
-  has_many :matches, ->(user) { unscope(where: :user_id).where("user_id = ? OR opposed_user_id = ?", user.id, user.id) }, class_name: 'Match', dependent: :destroy
   has_many :conversations, ->(user) { unscope(where: :user_id).where("sender_id = ? OR recipient_id = ?", user.id, user.id) }, class_name: 'Conversation', dependent: :destroy
 
   validates :user_name, presence: true
