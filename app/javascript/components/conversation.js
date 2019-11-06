@@ -6,7 +6,6 @@ const conversation = () => {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
-
     // show 'is typing if opposed user has your chat open'
     if (data['status'] && location.pathname === '/conversations') {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){

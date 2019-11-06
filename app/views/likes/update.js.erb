@@ -26,7 +26,7 @@ var hideModal = () => {
 
 <% if @like_info[:match] %>
 
-  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @like_info[:opposed_user] %>'
+  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @like_info[:opposed_user], conversation_id: @like_info[:conversation_id] %>'
 
   showModal();
 

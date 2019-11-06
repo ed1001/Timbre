@@ -6,12 +6,6 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.check_conversation(current_user, User.find(params[:user_id]))
-    message = Message.new(message_params)
-    message.update(conversation: @conversation, sender: current_user)
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   def start
@@ -32,7 +26,7 @@ class ConversationsController < ApplicationController
 
   private
 
-  def message_params
-    params.require(:conversation).permit(:body)
-  end
+  # def message_params
+  #   params.require(:conversation).permit(:body)
+  # end
 end

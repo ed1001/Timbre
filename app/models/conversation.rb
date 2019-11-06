@@ -12,7 +12,9 @@ class Conversation < ApplicationRecord
   end
 
   scope :fetch_conversations, -> (user) do
-    where(recipient_id: user.id).or(Conversation.where(sender_id: user.id))
+    where(recipient_id: user.id)
+      .or(where(sender_id: user.id))
+      .select { |convo| convo.messages.any? }
   end
 
   def self.check_conversation(sender, recipient)
