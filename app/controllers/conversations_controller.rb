@@ -14,6 +14,12 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def start
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.order(id: :asc)

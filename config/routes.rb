@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   post '/likes/update', to: 'likes#update'
 
+  get '/conversations/start', to: 'conversations#start', as: :start_conversation
+
   post 'messages/update', to: 'messages#update_message'
   post 'messages/status', to: 'messages#status'
 
