@@ -1,1 +1,6 @@
-console.log('start');
+document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', '<%= j render "conversations/insert_new_conversation", conversation: @conversation %>')
+
+Rails.ajax({
+  url: `/conversations/${'<%= @conversation.id %>'}`,
+  type: "GET",
+});

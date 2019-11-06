@@ -9,6 +9,8 @@ class ConversationsController < ApplicationController
   end
 
   def start
+    @conversation = Conversation.between(current_user, params[:match]).first
+
     respond_to do |format|
       format.js
     end
@@ -23,10 +25,4 @@ class ConversationsController < ApplicationController
       format.js
     end
   end
-
-  private
-
-  # def message_params
-  #   params.require(:conversation).permit(:body)
-  # end
 end

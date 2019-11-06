@@ -7,7 +7,7 @@
       <div class="match-content">
         <% @new_matches.each do |match| %>
           <div class="match-box">
-            <%= link_to start_conversation_path, remote: true do %>
+            <%= link_to start_conversation_path(match: match), remote: true do %>
               <%= cl_image_tag match.photos.first.photo, height: 45, width: 45, crop: :fill, class: "avatar" %>
             <% end %>
             <span><%= match.user_name %></span>
