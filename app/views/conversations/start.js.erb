@@ -1,6 +1,26 @@
 document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', '<%= j render "conversations/insert_new_conversation", conversation: @conversation %>')
 
+//trigger the show controller method for the new convo
 Rails.ajax({
   url: `/conversations/${'<%= @conversation.id %>'}`,
   type: "GET",
 });
+
+var convos = document.querySelectorAll('.conversation-box');
+convos.forEach((c) => {
+  c.classList.remove('conversation-box-active');
+  if (c.dataset['convoId'] == '<%= @conversation.id %>')
+    c.classList.add('conversation-box-active');
+})
+
+// reactivate listener to include the newly added convo box
+convos.forEach((convo) => {
+  convo.addEventListener('click', () => {
+    convos.forEach((c) => {
+      c.classList.remove('conversation-box-active');
+    })
+    convo.classList.add('conversation-box-active');
+    convo.classList.remove('conversation-box-new');
+  })
+})
+

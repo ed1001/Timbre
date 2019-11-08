@@ -6,6 +6,7 @@ const conversation = () => {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
+
     // show 'is typing if opposed user has your chat open'
     if (data['status'] && location.pathname === '/conversations') {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){
@@ -34,12 +35,17 @@ const conversation = () => {
         rawText = `${rawText.substring(0, 27)}...`;
       }
 
+      var conId = data['conversation_id'].toString();
+
+
+      //Make array of existing convos then map the convo Ids and check if incoming message is part of a new convo
+      const newConvo = !Array.from(document.querySelectorAll('.conversation-box')).map(x => x.dataset['convoId'] ).includes(conId);
+
       // add new convo box if new convo
-      var conId = data['conversation_id'].toString()
-      if (data.is_new && location.pathname === '/conversations') {
+      if (newConvo && location.pathname === '/conversations') {
         document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', `
           <a data-remote="true" href="/conversations/${conId}">
-            <div class="conversation-box conversation-box-new" data-user-id=${data.user_id}>
+            <div class="conversation-box conversation-box-new" data-user-id=${data.user_id} data-convo-id="${data.conversation_id}">
                 <img height="40" width="40" class="avatar" src="${data.sender_photo}">
               <div class="conv-box">
                 <div class="conv-box-top">
