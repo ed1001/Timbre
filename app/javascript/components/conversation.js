@@ -1,5 +1,6 @@
 const burger = document.getElementById('nav-burger');
 const messagesLink = document.getElementById('messages-link');
+const matches = document.querySelectorAll('.match-box');
 
 const conversation = () => {
   App.conversation = App.cable.subscriptions.create("ConversationChannel", {
@@ -7,7 +8,7 @@ const conversation = () => {
     disconnected: function() {},
     received: function(data) {
 
-    // show 'is typing if opposed user has your chat open'
+    // show 'is typing' if opposed user has your chat open
     if (data['status'] && location.pathname === '/conversations') {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){
         var typingStatus = document.querySelector('.type-indication');
@@ -142,6 +143,14 @@ const activateConversation = () => {
   })
 }
 
+const listenForMatches = () => {
+  matches.forEach((match) => {
+    match.addEventListener('click', () => {
+     match.parentNode.removeChild(match);
+    })
+  })
+}
+
 const listenForTextarea = () => {
   const textarea = $('.typing-area');
   const userId = $('.conversation-box-active')[0].dataset.userId;
@@ -203,4 +212,4 @@ const isTyping = () => {
     });
 }
 
-export { conversation, activateConversation, isTyping }
+export { conversation, activateConversation, isTyping, listenForMatches }
