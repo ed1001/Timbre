@@ -6,11 +6,12 @@
       <span class="match-text">New matches</span>
       <div class="match-content">
         <% @new_matches.each do |match| %>
+        <% match_class = match[:new] ? 'avatar match-new' : 'avatar' %>
           <div class="match-box">
-            <%= link_to start_conversation_path(match: match), remote: true do %>
-              <%= cl_image_tag match.photos.first.photo, height: 45, width: 45, crop: :fill, class: "avatar" %>
+            <%= link_to start_conversation_path(match: match[:user]), remote: true do %>
+              <%= cl_image_tag match[:user].photos.first.photo, height: 45, width: 45, crop: :fill, class: match_class %>
             <% end %>
-            <span><%= match.user_name %></span>
+            <span><%= match[:user].user_name %></span>
           </div>
         <% end %>
       </div>

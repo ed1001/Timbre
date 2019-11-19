@@ -9,7 +9,9 @@ class ConversationsController < ApplicationController
   end
 
   def start
-    @conversation = Conversation.between(current_user, params[:match]).first
+    @conversation = Conversation.between(current_user, params[:match])
+                                .first
+                                .set_new(current_user)
 
     respond_to do |format|
       format.js

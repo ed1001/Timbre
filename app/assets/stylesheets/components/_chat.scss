@@ -84,6 +84,21 @@
 .avatar {
   border-radius: 50%;
   border: 1px double white;
+  &.match-new {
+    animation: pulse_border 2.3s infinite;
+  }
+}
+
+@keyframes pulse_border {
+  0% {
+    border-color: #FFFFFF;
+  }
+  50% {
+    border-color: #FF4136;
+  }
+  100% {
+    border-color: #FFFFFF;
+  }
 }
 
 .conversation-bar {
