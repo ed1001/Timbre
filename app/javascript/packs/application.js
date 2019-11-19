@@ -6,7 +6,7 @@ import { selectSwitch } from '../components/geolocation.js'
 import { btnForm } from '../components/form.js'
 import { slider } from '../components/slider.js'
 import { listenForJcrop, initJcrop } from '../components/jcrop.js'
-import { conversation, activateConversation, isTyping, listenForMatches } from '../components/conversation';
+import { conversation, activateConversation, isTyping } from '../components/conversation';
 import { initSortable } from '../components/sortable.js'
 
 burgerAnimate();
@@ -27,7 +27,6 @@ switch (location.pathname) {
   case '/conversations':
     activateConversation();
     isTyping();
-    listenForMatches();
     break;
   default:
     break;

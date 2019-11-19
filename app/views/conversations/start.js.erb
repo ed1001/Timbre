@@ -1,5 +1,9 @@
 document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', '<%= j render "conversations/insert_new_conversation", conversation: @conversation %>')
 
+var opposedUserId = '<%= @opposed_user_id %>'
+var match = document.querySelector(`[data-match-id='${opposedUserId}']`);
+match.parentNode.removeChild(match);
+
 //trigger the show controller method for the new convo
 Rails.ajax({
   url: `/conversations/${'<%= @conversation.id %>'}`,

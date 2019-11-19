@@ -7,7 +7,7 @@
       <div class="match-content">
         <% @new_matches.each do |match| %>
         <% match_class = match[:new] ? 'avatar match-new' : 'avatar' %>
-          <div class="match-box">
+          <div class="match-box" data-match-id="<%= match[:user].id %>">
             <%= link_to start_conversation_path(match: match[:user]), remote: true do %>
               <%= cl_image_tag match[:user].photos.first.photo, height: 45, width: 45, crop: :fill, class: match_class %>
             <% end %>

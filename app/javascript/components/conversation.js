@@ -44,6 +44,10 @@ const conversation = () => {
 
       // add new convo box if new convo
       if (newConvo && location.pathname === '/conversations') {
+        // first remove match from matchbar of recipient
+        var match = document.querySelector(`[data-match-id='${data.user_id}']`);
+        match.parentNode.removeChild(match);
+
         document.querySelector('.conversation-bar').insertAdjacentHTML('afterbegin', `
           <a data-remote="true" href="/conversations/${conId}">
             <div class="conversation-box conversation-box-new" data-user-id=${data.user_id} data-convo-id="${data.conversation_id}">
@@ -149,14 +153,6 @@ const activateConversation = () => {
   })
 }
 
-const listenForMatches = () => {
-  matches.forEach((match) => {
-    match.addEventListener('click', () => {
-     match.parentNode.removeChild(match);
-    })
-  })
-}
-
 const listenForTextarea = () => {
   const textarea = $('.typing-area');
   const userId = $('.conversation-box-active')[0].dataset.userId;
@@ -218,4 +214,4 @@ const isTyping = () => {
     });
 }
 
-export { conversation, activateConversation, isTyping, listenForMatches }
+export { conversation, activateConversation, isTyping }

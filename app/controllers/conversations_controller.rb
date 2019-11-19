@@ -12,6 +12,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.between(current_user, params[:match])
                                 .first
                                 .set_new(current_user)
+    @opposed_user_id = @conversation.opposed_user(current_user).id
 
     respond_to do |format|
       format.js
