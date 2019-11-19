@@ -9,7 +9,7 @@ const conversation = () => {
     received: function(data) {
 
     // show 'is typing' if opposed user has your chat open
-    if (data['status'] && location.pathname === '/conversations') {
+    if (data['status'] && location.pathname === '/conversations' && document.querySelector('.conversation-box-active')) {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){
         var typingStatus = document.querySelector('.type-indication');
         if (data['status'] === 'start') {
@@ -59,9 +59,15 @@ const conversation = () => {
               </div>
             </div>
           </a>`)
-        // run this func again to pick up newly entered convo box
+        // call activateConversation again to pick up newly entered convo box
         activateConversation();
       } else if (location.pathname === '/conversations') {
+          // move convo box to the top when receiving a message
+          const convos = document.querySelectorAll('.conversation-box');
+          if (conId !== convos[0].dataset['convoId']) {
+            convos[0].parentElement.before(document.querySelector(`[data-convo-id='${conId}']`).parentElement);
+          }
+
           // code for adding to message preview
           document.querySelector(`.conv-preview-${conId}`).innerText = rawText
 
