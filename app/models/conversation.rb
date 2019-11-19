@@ -15,6 +15,8 @@ class Conversation < ApplicationRecord
     where(recipient_id: user.id)
       .or(where(sender_id: user.id))
       .select { |convo| convo.messages.any? }
+      .sort_by { |convo| convo.messages.last.created_at }
+      .reverse
   end
 
   def self.fetch_new_matches(user)
