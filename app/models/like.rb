@@ -20,7 +20,7 @@ class Like < ApplicationRecord
         # find_like.liked returns bool, assign to match
         like_info[:match] = find_like.liked
         like_info[:opposed_user] = User.find(id)
-        like_info[:conversation_id] = Conversation.create!(sender: current_user, recipient: like_info[:opposed_user]).id
+        like_info[:conversation_id] = Conversation.create!(sender: current_user, recipient: like_info[:opposed_user], read_sender: true).id
       else
         # has not come across you yet, add this user to your likes array
         current_user.likes.build(opposed_user_id: id, liked: true).save!

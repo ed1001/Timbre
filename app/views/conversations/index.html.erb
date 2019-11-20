@@ -21,7 +21,7 @@
     <% if @conversations.length > 0 %>
       <div class="conversation-bar">
         <% @conversations.each do |conversation| %>
-          <%= render partial: "conv_box", locals: {conversation: conversation} %>
+          <%= render partial: "conv_box", locals: {conversation: conversation, sender: conversation.sender == current_user} %>
         <% end %>
       </div>
       <div class="conv-display-container">

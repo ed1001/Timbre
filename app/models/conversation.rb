@@ -14,10 +14,14 @@ class Conversation < ApplicationRecord
   scope :fetch_conversations, -> (user) do
     where(recipient_id: user.id)
       .or(where(sender_id: user.id))
-      .select { |convo| convo.messages.any? }
+  end
+
+  scope :fetch_active_conversations, -> (user) do
+    fetch_conversations(user).select { |convo| convo.messages.any? }
       .sort_by { |convo| convo.messages.last.created_at }
       .reverse
   end
+
 
   def self.fetch_new_matches(user)
     user.conversations.reject { |convo| convo.messages.any? }
@@ -28,6 +32,12 @@ class Conversation < ApplicationRecord
     Conversation.between(sender, recipient).first_or_create do |convo|
       convo.sender = sender
       convo.recipient = recipient
+    end
+  end
+
+  def self.new_mail(user)
+    fetch_conversations(user).any? do |convo|
+      convo.sender == user ? !convo.read_sender : !convo.read_recipient
     end
   end
 
@@ -42,5 +52,13 @@ class Conversation < ApplicationRecord
       update!(new_recipient: false)
     end
     self
+  end
+
+  def mark_as_read(user, read)
+    if sender == user
+      update!(read_sender: read)
+    else
+      update!(read_recipient: read)
+    end
   end
 end

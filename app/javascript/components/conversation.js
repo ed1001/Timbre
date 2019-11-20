@@ -7,7 +7,7 @@ const conversation = () => {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
-
+    console.log('hhhhhh')
     // show 'is typing' if opposed user has your chat open
     if (data['status'] && location.pathname === '/conversations' && document.querySelector('.conversation-box-active')) {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){
@@ -80,13 +80,18 @@ const conversation = () => {
           document.querySelector('.new-message-container').insertAdjacentHTML('beforebegin', data['message'])
           displayArea.scrollTop = displayArea.scrollHeight;
 
-          // mark messages coming in as read as the convo is already open and user is not sender
+          // mark conversation as read if the convo is already open and user is not sender
           if (userId != data.user_id) {
-            var message_id = {
-              id: data['message_id']
+            var conversationId = {
+              id: conId
             }
-            // ajax request to messages controller: update message
-            $.post('/messages/update', message_id);
+            // ajax request to conversations controller
+            var mydata = `id=${conId}`
+            Rails.ajax({
+              url: '/conversations/read',
+              type: 'post',
+              data: mydata
+            });
           }
 
         } else {

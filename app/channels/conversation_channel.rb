@@ -12,7 +12,9 @@ class ConversationChannel < ApplicationCable::Channel
       hash[el.values.first] = el.values.last
     end
 
-    Message.create(message_params)
+    @message = Message.create!(message_params)
+    convo = @message.conversation
+    convo.mark_as_read(convo.opposed_user(current_user), false)
   end
 
   # simple enough to not use a seperate job class

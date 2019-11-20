@@ -1,11 +1,6 @@
 <%= link_to conversation_path(conversation), remote: true do %>
-  <% rMessages = conversation.messages.where(user_id: conversation.opposed_user(current_user).id) %>
-  <% cClasses = "conversation-box" %>
-  <% if rMessages.count > 0 %>
-    <% if rMessages.last.read == false %>
-      <% cClasses = "conversation-box conversation-box-new" %>
-    <% end %>
-  <% end %>
+  <% read = sender ? conversation.read_sender : conversation.read_recipient %>
+  <% cClasses = read ? "conversation-box" : "conversation-box conversation-box-new" %>
   <div class="<%= cClasses %>" data-user-id="<%= conversation.opposed_user(current_user).id %>" data-convo-id="<%= conversation.id %>">
     <% if conversation.opposed_user(current_user).photos.any? %>
       <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
