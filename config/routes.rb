@@ -25,7 +25,9 @@ Rails.application.routes.draw do
 
   post '/likes/update', to: 'likes#update'
 
-  post 'messages/update', to: 'messages#update_message'
+  get '/conversations/start', to: 'conversations#start', as: :start_conversation
+  post 'conversations/read', to: 'conversations#mark_current_as_read'
+
   post 'messages/status', to: 'messages#status'
 
   resources :conversations, only: [:index, :create, :show] do

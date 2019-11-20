@@ -6,9 +6,12 @@
       <span class="match-text">New matches</span>
       <div class="match-content">
         <% @new_matches.each do |match| %>
-          <div class="match-box">
-            <%= cl_image_tag match.photos.first.photo, height: 45, width: 45, crop: :fill, class: "avatar" %>
-            <span><%= match.user_name %></span>
+        <% match_class = match[:new] ? 'avatar match-new' : 'avatar' %>
+          <div class="match-box" data-match-id="<%= match[:user].id %>">
+            <%= link_to start_conversation_path(match: match[:user]), remote: true do %>
+              <%= cl_image_tag match[:user].photos.first.photo, height: 45, width: 45, crop: :fill, class: match_class %>
+            <% end %>
+            <span><%= match[:user].user_name %></span>
           </div>
         <% end %>
       </div>
@@ -18,35 +21,7 @@
     <% if @conversations.length > 0 %>
       <div class="conversation-bar">
         <% @conversations.each do |conversation| %>
-          <%= link_to conversation_path(conversation), remote: true do %>
-            <% rMessages = conversation.messages.where(user_id: conversation.opposed_user(current_user).id) %>
-            <% cClasses = "conversation-box" %>
-            <% if rMessages.count > 0 %>
-              <% if rMessages.last.read == false %>
-                <% cClasses = "conversation-box conversation-box-new" %>
-              <% end %>
-            <% end %>
-            <div class="<%= cClasses %>" data-user-id="<%= conversation.opposed_user(current_user).id %>">
-              <% if conversation.opposed_user(current_user).photos.any? %>
-                <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
-              <% else %>
-                <%= cl_image_tag 'qtzze0folkfxpncosvni', height: 40, width: 40, crop: :fill, class: "avatar" %>
-              <% end %>
-              <div class="conv-box">
-                <div class="conv-box-top">
-                  <p class="conv-user-name">
-                    <%=  conversation.opposed_user(current_user).user_name %>
-                  </p>
-                  <p class="conv-time">
-                    <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %>
-                  </p>
-                </div>
-                <p class="conv-preview <%=" conv-preview-#{conversation.id}"%>">
-                    <%= conversation.messages.last.body %>
-                </p>
-              </div>
-            </div>
-          <% end %>
+          <%= render partial: "conv_box", locals: {conversation: conversation, sender: conversation.sender == current_user} %>
         <% end %>
       </div>
       <div class="conv-display-container">

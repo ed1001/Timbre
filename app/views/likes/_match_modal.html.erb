@@ -1,8 +1,9 @@
 <div class="modal-content<%= user.id %> modal-content">
   <p><em><%= "Send #{user.user_name} a message..." %></em></p>
-  <%= simple_form_for :conversation, url: conversations_path(user_id: user.id), remote: true, method: :post, html: { class: "new_message"} do |form| %>
+  <%= simple_form_for :message, url: conversation_messages_path(conversation_id: conversation_id, from_modal: true), remote: true, method: :post, html: { class: "new_message"} do |form| %>
     <%= form.input :body, label: false, input_html: { id: "message-field" } %>
-    <% form.hidden_field :user_id, value: user %>
+    <%= form.hidden_field :conversation_id, value: conversation_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
     <div class="d-flex">
       <%= form.button :submit, value: 'send', class: "modal-submit" %>
     <% end %>

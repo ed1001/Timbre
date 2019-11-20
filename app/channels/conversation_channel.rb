@@ -12,15 +12,30 @@ class ConversationChannel < ApplicationCable::Channel
       hash[el.values.first] = el.values.last
     end
 
-    Message.create(message_params)
+    @message = Message.create!(message_params)
+    convo = @message.conversation
+    convo.mark_as_read(convo.opposed_user(current_user), false)
   end
 
   # simple enough to not use a seperate job class
-  def typing_status(status)
+  def typing_status(data)
     ActionCable.server.broadcast(
-      "conversations-#{status['user_id']}",
-      status: status['status'],
+      "conversations-#{data['user_id']}",
+      status: data['status'],
       user_id: current_user.id
+    )
+  end
+
+  def new_match(data)
+    convo = Conversation.find(data['convo_id'].to_i)
+
+    ActionCable.server.broadcast(
+      "conversations-#{convo.sender_id}",
+      new_match: true
+    )
+    ActionCable.server.broadcast(
+      "conversations-#{convo.recipient_id}",
+      new_match: true
     )
   end
 end

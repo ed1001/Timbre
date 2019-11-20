@@ -4,24 +4,11 @@
     <span id="logo-name">Timbre</span>
   <% end %>
 
-
   <!-- logic to find new mail -->
-  <% mail_class = '' %>
-
-  <% unless current_page?(conversations_path) %>
-    <% my_conversations = Conversation.where(recipient: current_user).or(Conversation.where(sender: current_user)) %>
-    <% if my_conversations.any? %>
-      <% my_conversations.each do |conversation| %>
-      <% r_Messages = conversation.messages.where.not(sender: current_user) %>
-        <% if r_Messages.any? %>
-          <% r_Messages.each do |message| %>
-            <% if message.read == false %>
-              <% mail_class = 'mail-active' %>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
+  <% if user_signed_in? && !current_page?(conversations_path) %>
+    <% mail_class = Conversation.new_mail(current_user) ? 'mail-active' : '' %>
+  <% else %>
+    <% mail_class = '' %>
   <% end %>
 
   <div class="d-flex">

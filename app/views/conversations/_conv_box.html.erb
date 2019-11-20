@@ -1,0 +1,24 @@
+<%= link_to conversation_path(conversation), remote: true do %>
+  <% read = sender ? conversation.read_sender : conversation.read_recipient %>
+  <% cClasses = read ? "conversation-box" : "conversation-box conversation-box-new" %>
+  <div class="<%= cClasses %>" data-user-id="<%= conversation.opposed_user(current_user).id %>" data-convo-id="<%= conversation.id %>">
+    <% if conversation.opposed_user(current_user).photos.any? %>
+      <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
+    <% else %>
+      <%= cl_image_tag 'qtzze0folkfxpncosvni', height: 40, width: 40, crop: :fill, class: "avatar" %>
+    <% end %>
+    <div class="conv-box">
+      <div class="conv-box-top">
+        <p class="conv-user-name">
+          <%=  conversation.opposed_user(current_user).user_name %>
+        </p>
+        <p class="conv-time">
+          <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %>
+        </p>
+      </div>
+      <p class="conv-preview <%=" conv-preview-#{conversation.id}"%>">
+          <%= conversation.messages.last.body %>
+      </p>
+    </div>
+  </div>
+<% end %>

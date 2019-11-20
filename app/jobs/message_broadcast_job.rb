@@ -20,7 +20,6 @@ class MessageBroadcastJob < ApplicationJob
       message_id: message.id,
       sender_name: message.sender.user_name.to_s,
       sender_photo: photo_check(message),
-      is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
     )
   end
@@ -34,7 +33,6 @@ class MessageBroadcastJob < ApplicationJob
       message_id: message.id,
       sender_name: message.sender.user_name.to_s,
       sender_photo: photo_check(message),
-      is_new: message.conversation.messages.length == 1,
       sent_at: message.created_at.to_time.strftime("%k:%M")
     )
   end

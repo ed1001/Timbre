@@ -1,13 +1,19 @@
 <%= link_to conversation_path(conversation), remote: true do %>
-  <div class="conversation-box" data-user-id="<%= conversation.opposed_user(current_user).id %>">
+  <div class="conversation-box" data-user-id="<%= conversation.opposed_user(current_user).id %>" data-convo-id="<%= conversation.id %>">
       <%= cl_image_tag conversation.opposed_user(current_user).photos.first.photo, height: 40, width: 40, crop: :fill, class: "avatar" %>
     <div class="conv-box">
       <div class="conv-box-top">
-        <p class="conv-user-name"><%=  conversation.opposed_user(current_user).first_name %> <%= conversation.opposed_user(current_user).last_name %></p>
-        <p class="conv-time"> <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %></p>
+        <p class="conv-user-name"><%=  conversation.opposed_user(current_user).user_name %></p>
+        <p class="conv-time">
+          <% if  conversation.messages.any? %>
+            <%= conversation.messages.last.created_at.to_time.strftime("%k:%M") %>
+          <% end %>
+        </p>
       </div>
       <p class="conv-preview <%="conv-preview-#{conversation.id}"%>">
+        <% if  conversation.messages.any? %>
           <%= conversation.messages.last.body %>
+        <% end %>
       </p>
     </div>
   </div>

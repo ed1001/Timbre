@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_101127) do
+ActiveRecord::Schema.define(version: 2019_11_19_154105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 2019_09_18_101127) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "new_sender", default: true
+    t.boolean "new_recipient", default: true
+    t.boolean "read_sender", default: false
+    t.boolean "read_recipient", default: false
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
   end
 
@@ -39,14 +43,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_101127) do
     t.integer "opposed_user_id"
     t.index ["user_id", "opposed_user_id"], name: "index_likes_on_user_id_and_opposed_user_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "matches", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "opposed_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -97,7 +93,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_101127) do
 
   add_foreign_key "avoids", "users"
   add_foreign_key "likes", "users"
-  add_foreign_key "matches", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "photos", "users"

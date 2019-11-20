@@ -22,11 +22,12 @@ var hideModal = () => {
     modalCont.classList.add('move-down');
     modalCont.classList.remove('move-up');
     document.querySelector('.overlay').classList.remove('is-visible');
+    App.conversation.new_match('<%= @like_info[:conversation_id] %>');
 }
 
 <% if @like_info[:match] %>
 
-  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @like_info[:opposed_user] %>'
+  modalCont.innerHTML = '<%= j render "likes/match_modal", user: @like_info[:opposed_user], conversation_id: @like_info[:conversation_id] %>'
 
   showModal();
 
