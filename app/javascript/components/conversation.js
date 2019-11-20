@@ -7,9 +7,12 @@ const conversation = () => {
     connected: function() {},
     disconnected: function() {},
     received: function(data) {
-    console.log('hhhhhh')
+    // make burger red when new match without message
+    if (data['new_match'] && location.pathname !== '/conversations') {
+      burgerActivate();
+
     // show 'is typing' if opposed user has your chat open
-    if (data['status'] && location.pathname === '/conversations' && document.querySelector('.conversation-box-active')) {
+    } else if (data['status'] && location.pathname === '/conversations' && document.querySelector('.conversation-box-active')) {
       if (data['user_id'] == document.querySelector('.conversation-box-active').dataset.userId){
         var typingStatus = document.querySelector('.type-indication');
         if (data['status'] === 'start') {
@@ -18,16 +21,14 @@ const conversation = () => {
           typingStatus.classList.remove('type-indication-active');
         }
       }
+
+    // handle message
     } else if (data['message']) {
 
       // make burger red for notification
       var userId = document.getElementById('conv-user-id').dataset.userId
       if (userId != data.user_id && location.pathname !== '/conversations') {
-        burger.classList.add('mail-active');
-        messagesLink.classList.add('mail-active');
-      }else if (location.pathname === '/conversations' && data.is_new) {
-        burger.classList.add('mail-active');
-        messagesLink.classList.add('mail-active');;
+        burgerActivate();
       }
 
       // get raw text for preview in convo box
@@ -115,7 +116,12 @@ const conversation = () => {
         status: status,
         user_id: userId
       });
-    }
+    },
+    new_match: function(convoId) {
+      return this.perform('new_match', {
+        convo_id: convoId
+      });
+    },
   });
 
   // add to preview text in convo box as it's being populated
@@ -156,6 +162,11 @@ const activateConversation = () => {
       }
     })
   })
+}
+
+const burgerActivate = () => {
+  burger.classList.add('mail-active');
+  messagesLink.classList.add('mail-active');
 }
 
 const listenForTextarea = () => {

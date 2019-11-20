@@ -37,7 +37,11 @@ class Conversation < ApplicationRecord
 
   def self.new_mail(user)
     fetch_conversations(user).any? do |convo|
-      convo.sender == user ? !convo.read_sender : !convo.read_recipient
+      if convo.sender == user
+        !convo.read_sender || (convo.messages.empty? && convo.new_sender)
+      else
+        !convo.read_recipient || (convo.messages.empty? && convo.new_recipient)
+      end
     end
   end
 
