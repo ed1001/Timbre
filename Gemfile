@@ -3,7 +3,7 @@ ruby '2.6.3'
 
 # added
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'geocoder'
 gem 'mini_magick'
 gem "nokogiri", ">= 1.10.4"
